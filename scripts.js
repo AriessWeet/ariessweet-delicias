@@ -1,8 +1,7 @@
-function startSite() {
-  const name = document.getElementById('userName').value;
-  if (name.trim() !== '') {
-    document.getElementById('welcomeScreen').style.display = 'none';
-    document.getElementById('mainContent').style.display = 'block';
-    document.getElementById('personalMessage').innerText = `¡Hola ${name}, nos encanta que estés acá! 💖`;
+document.getElementById("formulario").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const nombre = document.getElementById("nombre").value;
+  if (nombre.trim() !== "") {
+    window.location.href = "home.html";
   }
-}
+});
