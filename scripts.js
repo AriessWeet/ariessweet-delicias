@@ -1,11 +1,19 @@
-<<<<<<< HEAD
-document.getElementById("formulario").addEventListener("submit", function(event) {
-  event.preventDefault();
-  const nombre = document.getElementById("nombre").value;
-  if (nombre.trim() !== "") {
-    window.location.href = "home.html";
-  }
-});
-=======
+document.addEventListener("DOMContentLoaded", () => {
+  const formulario = document.getElementById("formulario");
 
->>>>>>> 895607d1786e3ecdff36621eaa1aebcdda526f49
+  formulario.addEventListener("submit", function (e) {
+    e.preventDefault(); // evita que el formulario recargue la página
+
+    const nombre = document.getElementById("nombre").value.trim();
+
+    if (nombre !== "") {
+      // Podés guardar el nombre en localStorage si querés usarlo después
+      localStorage.setItem("usuario", nombre);
+
+      // Redirige a home.html
+      window.location.href = "home.html";
+    } else {
+      alert("Por favor, escribí tu nombre");
+    }
+  });
+});
