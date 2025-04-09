@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AriessWeet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="welcome-screen" id="welcomeScreen">
+    <h2>¡Hola! ¿Cómo te llamás?</h2>
+    <input type="text" id="userName" placeholder="Escribí tu nombre" />
+    <button onclick="startSite()">Ingresar</button>
+  </div>
+
+  <div class="main-content" id="mainContent" style="display:none;">
+    <header>
+      <h1>Bienvenid@ a AriessWeet 🍰</h1>
+      <p id="personalMessage"></p>
+    </header>
+
+    <section class="about">
+      <h2>Conocé AriessWeet 💖</h2>
+      <p>En <strong>AriessWeet</strong> no solo creamos postres... creamos momentos. Cada torta y dulce detalle está hecho con amor por Nanda 🧁. Porque el amor se sirve en porciones dulces.</p>
+    </section>
+
+    <section class="reviews">
+      <h2>Lo que dicen nuestros clientes 🍓</h2>
+      <div class="review-card">“La Red Velvet fue un espectáculo 😍.”<br><strong>– Luciana M.</strong></div>
+      <div class="review-card">“¡Mejor que Pinterest!”<br><strong>– @sofi.repostera</strong></div>
+      <div class="review-card">“Mi favorito: Cheesecake de frambuesa.”<br><strong>– Fede T.</strong></div>
+    </section>
+
+    <section class="payment">
+      <h2>Formas de Pago 💳</h2>
+      <a href="https://wa.me/59894295759" class="wpp-button">💬 Pedí por WhatsApp</a><br><br>
+      <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a>
+      <p>También aceptamos Abitab, efectivo y transferencias. ¡Coordinamos por WhatsApp! 😄</p>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
