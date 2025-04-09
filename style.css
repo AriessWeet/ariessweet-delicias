@@ -111,4 +111,28 @@ form button:hover {
 #cerrar-sesion:hover {
   background-color: #c2185b;
   transform: scale(1.05);
+}/* Animación de fade-in para elementos */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+.bienvenida-container {
+  animation: fadeInUp 1s ease-out;
+}
+
+.bienvenida-imagen,
+.titulo-bienvenida,
+.subtitulo,
+form {
+  animation: fadeInUp 1s ease-out;
+  animation-delay: 0.3s;
+  animation-fill-mode: both;
+}
+
