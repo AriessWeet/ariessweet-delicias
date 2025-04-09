@@ -2,19 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AriessWeet</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
+  <!-- Pantalla de bienvenida mejorada -->
   <div class="welcome-screen" id="welcomeScreen">
-    <h2>¡Hola! ¿Cómo te llamás?</h2>
-    <input type="text" id="userName" placeholder="Escribí tu nombre" />
-    <button onclick="startSite()">Ingresar</button>
+    <div class="welcome-card">
+      <img src="assets/img/postre-lindo.png" alt="Postre delicioso" class="welcome-image"/>
+      <h2>¡Bienvenid@ a AriessWeet! 🍓</h2>
+      <p>¿Cómo te llamás?</p>
+      <input type="text" id="userName" placeholder="Escribí tu nombre..." />
+      <button onclick="startSite()">Ingresar</button>
+    </div>
   </div>
 
-  <div class="main-content" id="mainContent" style="display:none;">
+  <!-- Contenido principal -->
+  <div class="main-content" id="mainContent" style="display: none;">
     <header>
       <h1>Bienvenid@ a AriessWeet 🍰</h1>
       <p id="personalMessage"></p>
@@ -38,7 +44,6 @@
       <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a>
       <p>También aceptamos Abitab, efectivo y transferencias. ¡Coordinamos por WhatsApp! 😄</p>
     </section>
-
   </div>
 
   <script src="script.js"></script>
