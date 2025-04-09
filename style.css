@@ -1,1 +1,95 @@
+/* Fondo general */
+.bienvenida-body {
+  background: linear-gradient(to bottom, #ffe4ec, #fff1f7);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
+/* Cuadro central */
+.bienvenida-container {
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 0 0 30px rgba(255, 182, 193, 0.5);
+  padding: 40px;
+  text-align: center;
+  max-width: 450px;
+  margin: 40px auto;
+}
+
+/* Imagen decorativa */
+.bienvenida-imagen {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+/* Títulos y subtítulos */
+.titulo-bienvenida {
+  font-size: 1.8em;
+  color: #e91e63;
+  margin-bottom: 10px;
+}
+.subtitulo {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Formulario */
+form input[type="text"] {
+  padding: 10px;
+  width: 80%;
+  border: 2px solid #ffb6c1;
+  border-radius: 10px;
+  outline: none;
+  text-align: center;
+  font-size: 14px;
+}
+
+form button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+form button:hover {
+  background-color: #ff1493;
+  transform: scale(1.05);
+}
+
+/* Botones de pago y contacto */
+.wpp-button, .mp-button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+}
+.wpp-button {
+  background-color: #25D366;
+}
+.mp-button {
+  background-color: #009ee3;
+}
+
+/* Lista de productos */
+.producto-lista {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.producto-item {
+  text-align: center;
+  padding: 10px;
+}
