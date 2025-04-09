@@ -2,50 +2,27 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>AriessWeet | Inicio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inicio | AriessWeet</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bienvenida-body">
-  <div class="bienvenida-container">
-    <img src="assets/img/welcome.png" alt="Bienvenida" class="bienvenida-imagen">
-    <h1 class="titulo-bienvenida">¡Hola! Bienvenid@ a AriessWeet 🍰</h1>
-    <p class="subtitulo">Delicias hechas con amor por Nanda 💖</p>
+<body>
+  <div class="contenedor">
+    <h1 id="bienvenida">¡Bienvenido!</h1>
+    <p>Gracias por visitar AriessWeet 😊</p>
+    <img src="assets/img/hero.png" alt="Imagen bienvenida" class="imagen"/>
   </div>
 
-  <main style="padding: 20px;">
-    <!-- Productos -->
-    <section class="productos">
-      <h2 class="titulo-bienvenida">Nuestros Productos 🧁</h2>
-      <div class="producto-lista">
-        <div class="producto-item">
-          <img src="assets/img/cupcake.png" alt="Cupcake" class="bienvenida-imagen" style="width:80px;">
-          <h3>Cupcake de Fresa</h3>
-          <p>$350</p>
-        </div>
-        <div class="producto-item">
-          <img src="assets/img/postres.png" alt="Torta" class="bienvenida-imagen" style="width:80px;">
-          <h3>Torta Arcoíris</h3>
-          <p>$950</p>
-        </div>
-      </div>
-    </section>
+  <script>
+    // Mostramos el nombre del usuario guardado
+    const usuario = localStorage.getItem("usuario");
+    const bienvenida = document.getElementById("bienvenida");
 
-    <!-- Reseñas -->
-    <section>
-      <h2 class="titulo-bienvenida">Lo que dicen nuestros clientes 💬</h2>
-      <p class="subtitulo">"La Red Velvet fue un espectáculo 😍" — Luciana</p>
-      <p class="subtitulo">"¡La torta sorpresa llegó perfecta!" — @sofi.repostera</p>
-    </section>
-
-    <!-- Métodos de Pago -->
-    <section>
-      <h2 class="titulo-bienvenida">Formas de Pago 💳</h2>
-      <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a><br><br>
-      <a href="https://wa.me/59894295759" class="wpp-button">💬 Pedí por WhatsApp</a>
-      <p class="subtitulo">También aceptamos Abitab, efectivo y transferencias.</p>
-    </section>
-  </main>
-
-  <script src="scripts.js"></script>
+    if (usuario) {
+      bienvenida.textContent = `¡Hola, ${usuario}! Bienvenido a AriessWeet`;
+    } else {
+      bienvenida.textContent = "¡Bienvenido a AriessWeet!";
+    }
+  </script>
 </body>
 </html>
