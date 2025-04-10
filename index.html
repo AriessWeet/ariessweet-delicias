@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AriessWeet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bienvenida-body">
+
+  <div class="card-ingreso">
+    <img src="assets/img/logo-mini.png" alt="Logo mini Ariessweet" class="logo-mini" />
+    <h1 class="titulo-bienvenida">¡Bienvenida a AriessWeet! 🍓</h1>
+    <p class="subtitulo">Donde los dulces nacen del amor y la ternura 💖</p>
+
+    <form id="formulario" class="formulario-kawaii">
+      <input type="text" id="nombre" placeholder="Escribí tu nombre..." required />
+      <button type="submit" class="boton-ingreso">Ingresar 🍰</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const nombre = document.getElementById("nombre").value;
+      localStorage.setItem("usuario", nombre);
+      window.location.href = "home.html";
+    });
+  </script>
+
+</body>
+</html>

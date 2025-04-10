@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AriessWeet | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="home-body">
+
+  <!-- Banner principal -->
+  <header class="banner">
+    <img src="assets/img/ariessweet-banner.png" alt="Banner AriessWeet" class="banner-img">
+    <div class="banner-texto">
+      <h1 id="saludo">¡Bienvenida a AriessWeet! 🍰</h1>
+      <p>Donde cada dulce tiene magia, color y mucho amor 💖</p>
+    </div>
+    <button id="cerrar-sesion" class="cerrar-btn">Cerrar sesión</button>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="contenido">
+    <section class="seccion-kawaii">
+      <h2>🎀 Nuestros Productos</h2>
+      <div class="producto-lista">
+        <div class="card-producto">
+          <img src="https://cdn-icons-png.flaticon.com/512/9381/9381954.png" alt="Cupcake" />
+          <h3>Cupcake de Fresa</h3>
+          <p>$350</p>
+        </div>
+        <div class="card-producto">
+          <img src="https://cdn-icons-png.flaticon.com/512/10961/10961792.png" alt="Torta Arcoíris" />
+          <h3>Torta Arcoíris</h3>
+          <p>$950</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion-kawaii">
+      <h2>💬 Opiniones</h2>
+      <blockquote>"La Red Velvet fue un espectáculo 😍" — Luciana</blockquote>
+      <blockquote>"¡La torta sorpresa llegó perfecta!" — @sofi.repostera</blockquote>
+    </section>
+
+    <section class="seccion-kawaii">
+      <h2>💳 Pagá como quieras</h2>
+      <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a>
+      <a href="https://wa.me/59894295759" class="wpp-button">💬 Pedí por WhatsApp</a>
+    </section>
+
+    <section class="seccion-kawaii aviso-instagram">
+      <h2>📸 Próximamente...</h2>
+      <p>Muy pronto vas a poder ver nuestro feed de Instagram directo desde esta web 💫</p>
+    </section>
+  </main>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const nombre = localStorage.getItem("usuario");
+      const saludo = document.getElementById("saludo");
+
+      if (nombre && saludo) {
+        saludo.textContent = `¡Hola ${nombre}! Bienvenid@ a AriessWeet 🍰`;
+      } else {
+        window.location.href = "index.html";
+      }
+
+      document.getElementById("cerrar-sesion").addEventListener("click", () => {
+        localStorage.removeItem("usuario");
+        window.location.href = "index.html";
+      });
+    });
+  </script>
+
+</body>
+</html>
