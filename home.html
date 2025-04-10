@@ -78,6 +78,18 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       font-size: 1rem;
       color: #d63384;
+      z-index: 9999;
+    }
+    .burbuja-dialogo .cerrar-burbuja {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      cursor: pointer;
+      color: #d63384;
+      font-weight: bold;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
     }
   </style>
 </head>
@@ -91,152 +103,7 @@
   </div>
 
   <img src="assets/img/mascota-cupcake.png" alt="Mascota Cupcake" class="mascota-kawaii">
-  <div class="burbuja-dialogo" id="mensaje-mascota">🍓 ¡Hola! No olvides dejar tu reseñita dulce abajo 💌</div>
-
-  <header class="banner">
-    <img src="assets/img/mascota-cupcake-v2.png" class="mascota-kawaii" />
-     <div class="banner-texto">
-      <h1 id="saludo">¡Bienvenida a AriessWeet! 🍰</h1>
-      <p>Donde cada dulce tiene magia, color y mucho amor 💖</p>
-    </div>
-    <button id="cerrar-sesion" class="cerrar-btn">Cerrar sesión</button>
-  </header>
-
-  <section class="seccion-kawaii">
-    <a href="sobremi.html" class="mp-button">Conocé nuestra historia 💖</a>
-  </section>
-
-  <section id="reseñas" class="seccion-kawaii">
-    <h2>🍓 Sé parte de nuestro muro de reseñas 💖</h2>
-    <p>Nuestro pequeño salón de la fama dulce 🍰</p>
-
-    <form id="review-form" class="formulario-opinion">
-      <input type="text" id="review-name" placeholder="Tu nombre" required />
-      <textarea id="review-text" placeholder="Tu mensaje dulce..." required></textarea>
-      <button type="submit">Enviar reseña 🍭</button>
-    </form>
-
-    <div class="opiniones-grid-columns">
-      <div id="columna-izquierda" class="opinion-columna"></div>
-      <div class="instagram-placeholder">📸 Muy pronto vas a poder ver aquí las últimas publicaciones de nuestro Instagram 💫</div>
-      <div id="columna-derecha" class="opinion-columna"></div>
-    </div>
-  </section>
-
-  <section class="seccion-kawaii">
-    <h2>💳 Pagá como quieras</h2>
-    <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a>
-    <a href="https://wa.me/59894295759" class="wpp-button">💬 Pedí por WhatsApp</a>
-  </section>
-
-  <footer class="footer-kawaii">
-    <p>Hecho con amor por AriessWeet 🍓</p>
-    <div class="footer-redes">
-      <a href="https://wa.me/59894295759" target="_blank">💬 WhatsApp</a>
-      <a href="https://www.instagram.com/ariessweet" target="_blank">📸 Instagram</a>
-    </div>
-    <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
-  </footer>
-
-  <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCOxnc8vkjcFzLEsFtHkFmjCfwxH_y0DVU",
-      authDomain: "ariessweet2025.firebaseapp.com",
-      databaseURL: "https://ariessweet2025-default-rtdb.firebaseio.com",
-      projectId: "ariessweet2025",
-      storageBucket: "ariessweet2025.firebasestorage.app",
-      messagingSenderId: "468812407156",
-      appId: "1:468812407156:web:9858c84ae6bc04095e0c21",
-      measurementId: "G-WHQ77VLT0W"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const reseñasRef = ref(db, "reseñas");
-
-    document.getElementById("review-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const name = document.getElementById("review-name").value;
-      const text = document.getElementById("review-text").value;
-
-      push(reseñasRef, {
-        name,
-        text,
-        date: Date.now()
-      });
-
-      document.getElementById("review-form").reset();
-    });
-
-    onValue(reseñasRef, (snapshot) => {
-      const data = snapshot.val();
-      const izq = document.getElementById("columna-izquierda");
-      const der = document.getElementById("columna-derecha");
-      izq.innerHTML = "";
-      der.innerHTML = "";
-
-      const reseñas = [];
-      for (let id in data) {
-        reseñas.push({ id, ...data[id] });
-      }
-      reseñas.sort((a, b) => b.date - a.date);
-      const ultimas = reseñas.slice(0, 20);
-
-      const fijas = [
-        "La Red Velvet fue un espectáculo 😍 — Luciana",
-        "Todo llegó en hora y super fresco 🍓 — @dulceamor",
-        "Nunca vi una torta tan linda 🎂✨ — Mili",
-        "¡Ya van 3 veces que pido! 💖 — @fanpastel",
-        "El packaging es lo más tierno 🐰🍰 — Juli",
-        "Mi hijo quedó feliz con los cupcakes 🧁 — Caro",
-        "Son un 1000/10, como siempre ✨ — @foodie.uy",
-        "Mis amigas flashearon con la torta 🦄 — Naty",
-        "¡Sigan así! Todo hermoso 💕 — Vale",
-        "Un amor desde que pedís hasta que comés 🍬 — Ro"
-      ];
-
-      const todas = [...ultimas, ...fijas.map(t => ({ text: t }))];
-      todas.forEach((r, i) => {
-        const div = document.createElement("div");
-        div.className = "opinion-sticker";
-        div.innerHTML = r.name ? `<strong>🍭 ${r.name}</strong><p>${r.text}</p>` : `<p>${r.text}</p>`;
-        (i % 2 === 0 ? izq : der).appendChild(div);
-      });
-    });
-  </script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const nombre = localStorage.getItem("usuario");
-      const saludo = document.getElementById("saludo");
-      if (nombre && saludo) {
-        saludo.textContent = `¡Hola ${nombre}! Bienvenid@ a AriessWeet 🍰`;
-      } else {
-        window.location.href = "index.html";
-      }
-
-      document.getElementById("cerrar-sesion").addEventListener("click", () => {
-        localStorage.removeItem("usuario");
-        window.location.href = "index.html";
-      });
-
-      document.getElementById("anio-footer").textContent = new Date().getFullYear();
-
-      const musica = document.getElementById("bgm");
-      document.getElementById("musica-si").onclick = () => {
-        musica.volume = 0.15;
-        musica.play();
-        document.getElementById("popup-musica").style.display = "none";
-      };
-      document.getElementById("musica-no").onclick = () => {
-        document.getElementById("popup-musica").style.display = "none";
-      };
-    });
-  </script>
-</body>
-</html>
+  <div class="burbuja-dialogo" id="mensaje-mascota">
+    🍓 ¡Hola! No olvides dejar tu reseñita dulce abajo 💌
+    <button class="cerrar-burbuja" onclick="document.getElementById('mensaje-mascota').style.display='none'">✖</button>
+  </div>
