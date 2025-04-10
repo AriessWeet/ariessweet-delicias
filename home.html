@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AriessWeet | Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body class="home-body">
 
@@ -35,17 +34,39 @@
       <button type="submit">Enviar reseña 🍭</button>
     </form>
 
-    <div id="review-list" class="opiniones-grid"></div>
+    <div id="review-list" class="opiniones-grid">
+      <!-- 20 reseñas fijas -->
+      <div class="opinion-sticker">“La Red Velvet fue un espectáculo 😍” — Luciana</div>
+      <div class="opinion-sticker">“Todo llegó en hora y super fresco 🍓” — @dulceamor</div>
+      <div class="opinion-sticker">“Nunca vi una torta tan linda 🎂✨” — Mili</div>
+      <div class="opinion-sticker">“¡Ya van 3 veces que pido! 💖” — @fanpastel</div>
+      <div class="opinion-sticker">“El packaging es lo más tierno 🐰🍰” — Juli</div>
+      <div class="opinion-sticker">“Mi hijo quedó feliz con los cupcakes 🧁” — Caro</div>
+      <div class="opinion-sticker">“Son un 1000/10, como siempre ✨” — @foodie.uy</div>
+      <div class="opinion-sticker">“Mis amigas flashearon con la torta 🦄” — Naty</div>
+      <div class="opinion-sticker">“¡Sigan así! Todo hermoso 💕” — Vale</div>
+      <div class="opinion-sticker">“Un amor desde que pedís hasta que comés 🍬” — Ro</div>
+      <div class="opinion-sticker">“Nunca me fallan, ¡una delicia tras otra! 🎀” — Sofi</div>
+      <div class="opinion-sticker">“Pedí para un cumple y fue un éxito total 🥳” — Leo</div>
+      <div class="opinion-sticker">“La decoración es un sueño, me enamoré 💫” — Agus</div>
+      <div class="opinion-sticker">“¡Gracias por tanto amor en cada pastelito! 🧁” — Ani</div>
+      <div class="opinion-sticker">“El pedido llegó perfecto, y con un olor riquísimo 😋” — Flor</div>
+      <div class="opinion-sticker">“¡No puedo parar de recomendarles! 💌” — Dani</div>
+      <div class="opinion-sticker">“Se nota el cariño en cada detalle 💝” — Clari</div>
+      <div class="opinion-sticker">“Parecía salida de un cuento de hadas 🧚” — Mika</div>
+      <div class="opinion-sticker">“Lo más dulce del mundo, literalmente 🍭” — Pau</div>
+      <div class="opinion-sticker">“¡Ya quiero volver a pedir! 🐻🎂” — @chocolovers</div>
+    </div>
   </section>
 
-  <!-- Sección de pagos y contacto -->
+  <!-- Sección de pagos -->
   <section class="seccion-kawaii">
     <h2>💳 Pagá como quieras</h2>
     <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a>
     <a href="https://wa.me/59894295759" class="wpp-button">💌 Pedí por WhatsApp</a>
   </section>
 
-  <!-- Footer kawaii -->
+  <!-- Footer -->
   <footer class="footer-kawaii">
     <p>Hecho con amor por AriessWeet 🍓</p>
     <div class="footer-redes">
@@ -58,27 +79,24 @@
   <!-- Botón flotante WhatsApp -->
   <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
 
-  <!-- Firebase + reseñas -->
+  <!-- Firebase -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
     import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
 
     const firebaseConfig = {
-      apiKey: "AIzaSyCOxnc8vkjcFzLEsFtHkFmjCfwxH_y0DVU",
+      apiKey: "AIzaSyBN7ohoX7boeADUnovRwO-EjGH6bS43Cho",
       authDomain: "ariessweet2025.firebaseapp.com",
-      databaseURL: "https://ariessweet2025-default-rtdb.firebasedatabase.app", // ✅ CORREGIDO
+      databaseURL: "https://ariessweet2025-default-rtdb.firebasedatabase.app",
       projectId: "ariessweet2025",
-      storageBucket: "ariessweet2025.firebasestorage.app",
+      storageBucket: "ariessweet2025.appspot.com",
       messagingSenderId: "468812407156",
-      appId: "1:468812407156:web:9858c84ae6bc04095e0c21",
-      measurementId: "G-WHQ77VLT0W"
+      appId: "1:468812407156:web:9858c84ae6bc04095e0c21"
     };
 
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
     const db = getDatabase(app);
-    const reviewsRef = ref(db, 'reseñas');
+    const reviewRef = ref(db, 'reseñas');
 
     // enviar reseña
     document.getElementById("review-form").addEventListener("submit", (e) => {
@@ -86,27 +104,27 @@
       const name = document.getElementById("review-name").value;
       const text = document.getElementById("review-text").value;
 
-      push(reviewsRef, {
-        name: name,
-        text: text,
-        date: Date.now()
-      });
-
-      document.getElementById("review-form").reset();
+      if (name && text) {
+        push(reviewRef, {
+          name: name,
+          text: text,
+          date: Date.now()
+        });
+        document.getElementById("review-form").reset();
+      }
     });
 
-    // mostrar reseñas
-    onValue(reviewsRef, (snapshot) => {
+    // mostrar reseñas desde Firebase
+    onValue(reviewRef, (snapshot) => {
       const data = snapshot.val();
-      const reviews = [];
-      for (let id in data) {
-        reviews.push({ id, ...data[id] });
-      }
-      reviews.sort((a, b) => b.date - a.date);
-      const recent = reviews.slice(0, 20);
       const list = document.getElementById("review-list");
-      list.innerHTML = "";
-      recent.forEach((r) => {
+      if (!data) return;
+
+      const firebaseReviews = Object.values(data)
+        .sort((a, b) => b.date - a.date)
+        .slice(0, 20); // solo las últimas 20
+
+      firebaseReviews.forEach((r) => {
         const div = document.createElement("div");
         div.className = "opinion-sticker";
         div.innerHTML = `<strong>🍭 ${r.name}</strong><p>${r.text}</p>`;
@@ -115,6 +133,7 @@
     });
   </script>
 
+  <!-- Otros scripts -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const nombre = localStorage.getItem("usuario");
