@@ -223,5 +223,34 @@ body {
 
 .opinion-sticker:hover {
   transform: scale(1.05);
+}/* Opiniones estilo chat kawaii */
+.opiniones-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
 }
+
+.opinion-sticker {
+  max-width: 70%;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  font-size: 0.95rem;
+  color: #6c2a61;
+  font-style: italic;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+  position: relative;
+}
+
+.opiniones-grid .opinion-sticker:nth-child(odd) {
+  align-self: flex-start;
+  background-color: #ffe0f0;
+  border: 2px dashed #ffb6c1;
+}
+
+.opiniones-grid .opinion-sticker:nth-child(even) {
+  align-self: flex-end;
+  background-color: #d
+
 
