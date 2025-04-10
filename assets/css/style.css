@@ -195,3 +195,10 @@ body {
 .opinion-sticker:hover {
   transform: scale(1.03);
 }
+.aviso-feed {
+  text-align: center;
+  background-color: #fff8f1;
+  border: 2px dotted #ffc107;
+  font-weight: bold;
+  font-style: normal;
+}
