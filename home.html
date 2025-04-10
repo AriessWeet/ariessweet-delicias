@@ -5,8 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AriessWeet | Home</title>
   <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .popup-musica {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff0f5;
+      border: 2px dashed #ffb6c1;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      z-index: 9999;
+      max-width: 300px;
+      font-family: 'Quicksand', sans-serif;
+    }
+    .popup-musica p {
+      margin-bottom: 1rem;
+      color: #d63384;
+    }
+    .popup-musica button {
+      background-color: #ff69b4;
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      margin: 0 0.5rem;
+      cursor: pointer;
+    }
+    .popup-musica button:hover {
+      background-color: #e05697;
+    }
+  </style>
 </head>
 <body class="home-body">
+
+  <!-- Música fondo -->
+  <audio id="bgm" src="assets/sounds/home-bgm.mp3" loop preload="auto"></audio>
+  <div id="popup-musica" class="popup-musica">
+    <p>💕 ¿Querés que te acompañemos con una dulce melodía?<br>🎵 Activá nuestra música kawaii 🍓</p>
+    <button id="musica-si">Sí, quiero</button>
+    <button id="musica-no">No, gracias</button>
+  </div>
 
   <!-- Banner -->
   <header class="banner">
@@ -35,26 +76,7 @@
     </form>
 
     <div id="review-list" class="opiniones-grid">
-      <div class="opinion-sticker">“La Red Velvet fue un espectáculo 😍” — Luciana</div>
-      <div class="opinion-sticker">“Todo llegó en hora y super fresco 🍓” — @dulceamor</div>
-      <div class="opinion-sticker">“Nunca vi una torta tan linda 🎂✨” — Mili</div>
-      <div class="opinion-sticker">“¡Ya van 3 veces que pido! 💖” — @fanpastel</div>
-      <div class="opinion-sticker">“El packaging es lo más tierno 🐰🍰” — Juli</div>
-      <div class="opinion-sticker">“Mi hijo quedó feliz con los cupcakes 🧁” — Caro</div>
-      <div class="opinion-sticker">“Son un 1000/10, como siempre ✨” — @foodie.uy</div>
-      <div class="opinion-sticker">“Mis amigas flashearon con la torta 🦄” — Naty</div>
-      <div class="opinion-sticker">“¡Sigan así! Todo hermoso 💕” — Vale</div>
-      <div class="opinion-sticker">“Un amor desde que pedís hasta que comés 🍬” — Ro</div>
-      <div class="opinion-sticker">“Nunca me fallan, ¡una delicia tras otra! 🎀” — Sofi</div>
-      <div class="opinion-sticker">“Pedí para un cumple y fue un éxito total 🥳” — Leo</div>
-      <div class="opinion-sticker">“La decoración es un sueño, me enamoré 💫” — Agus</div>
-      <div class="opinion-sticker">“¡Gracias por tanto amor en cada pastelito! 🧁” — Ani</div>
-      <div class="opinion-sticker">“El pedido llegó perfecto, y con un olor riquísimo 😋” — Flor</div>
-      <div class="opinion-sticker">“¡No puedo parar de recomendarles! 💌” — Dani</div>
-      <div class="opinion-sticker">“Se nota el cariño en cada detalle 💝” — Clari</div>
-      <div class="opinion-sticker">“Parecía salida de un cuento de hadas 🧚” — Mika</div>
-      <div class="opinion-sticker">“Lo más dulce del mundo, literalmente 🍭” — Pau</div>
-      <div class="opinion-sticker">“¡Ya quiero volver a pedir! 🐻🎂” — @chocolovers</div>
+      <!-- Reseñas fijas y nuevas se cargan aquí -->
     </div>
   </section>
 
@@ -114,24 +136,38 @@
 
     onValue(reseñasRef, (snapshot) => {
       const data = snapshot.val();
-      if (!data) return;
       const lista = document.getElementById("review-list");
+      lista.innerHTML = "";
       const reseñas = [];
       for (let id in data) {
         reseñas.push({ id, ...data[id] });
       }
       reseñas.sort((a, b) => b.date - a.date);
       const ultimas = reseñas.slice(0, 20);
-      ultimas.forEach((r) => {
+
+      const fijas = [
+        "La Red Velvet fue un espectáculo 😍 — Luciana",
+        "Todo llegó en hora y super fresco 🍓 — @dulceamor",
+        "Nunca vi una torta tan linda 🎂✨ — Mili",
+        "¡Ya van 3 veces que pido! 💖 — @fanpastel",
+        "El packaging es lo más tierno 🐰🍰 — Juli",
+        "Mi hijo quedó feliz con los cupcakes 🧁 — Caro",
+        "Son un 1000/10, como siempre ✨ — @foodie.uy",
+        "Mis amigas flashearon con la torta 🦄 — Naty",
+        "¡Sigan así! Todo hermoso 💕 — Vale",
+        "Un amor desde que pedís hasta que comés 🍬 — Ro"
+      ];
+
+      [...ultimas, ...fijas.map(t => ({ text: t }))].forEach((r) => {
         const div = document.createElement("div");
         div.className = "opinion-sticker";
-        div.innerHTML = `<strong>🍭 ${r.name}</strong><p>${r.text}</p>`;
+        div.innerHTML = r.name ? `<strong>🍭 ${r.name}</strong><p>${r.text}</p>` : `<p>${r.text}</p>`;
         lista.appendChild(div);
       });
     });
   </script>
 
-  <!-- Scripts extra -->
+  <!-- Script para saludo, sesión y música -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const nombre = localStorage.getItem("usuario");
@@ -148,6 +184,16 @@
       });
 
       document.getElementById("anio-footer").textContent = new Date().getFullYear();
+
+      const musica = document.getElementById("bgm");
+      document.getElementById("musica-si").onclick = () => {
+        musica.volume = 0.15;
+        musica.play();
+        document.getElementById("popup-musica").style.display = "none";
+      };
+      document.getElementById("musica-no").onclick = () => {
+        document.getElementById("popup-musica").style.display = "none";
+      };
     });
   </script>
 </body>
