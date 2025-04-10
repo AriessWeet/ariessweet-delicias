@@ -2,233 +2,245 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AriessWeet | Home</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AriessWeet Delicias</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
   <style>
-    .popup-musica {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
       background: #fff0f5;
-      border: 2px dashed #ffb6c1;
-      padding: 2rem;
-      border-radius: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      z-index: 9999;
-      max-width: 300px;
-      font-family: 'Quicksand', sans-serif;
+      overflow-x: hidden;
     }
-    .popup-musica p {
-      margin-bottom: 1rem;
-      color: #d63384;
-    }
-    .popup-musica button {
-      background-color: #ff69b4;
-      border: none;
+    header {
+      background: linear-gradient(to right, #ffb6c1, #ff69b4);
       color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-      margin: 0 0.5rem;
-      cursor: pointer;
+      padding: 20px;
+      text-align: center;
+      position: relative;
     }
-    .popup-musica button:hover {
-      background-color: #e05697;
-    }
-    .burbuja-dialogo {
-      position: fixed;
-      bottom: 10rem;
-      left: 2rem;
-      background: #fff0f5;
-      border: 2px dashed #ffb6c1;
-      padding: 1.2rem;
-      border-radius: 1rem;
-      max-width: 260px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      font-size: 1rem;
-      color: #d63384;
-      z-index: 9999;
-    }
-    .burbuja-dialogo .cerrar-burbuja {
+    header img {
+      width: 80px;
       position: absolute;
-      top: 5px;
-      right: 10px;
-      cursor: pointer;
+      top: 10px;
+      left: 10px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    header p {
+      font-style: italic;
+      font-size: 1.1em;
+    }
+    .welcome {
+      text-align: center;
+      margin: 60px auto;
+    }
+    .welcome h2 {
+      font-size: 2em;
       color: #d63384;
-      font-weight: bold;
-      background: none;
+    }
+    .welcome button {
+      background: #ff69b4;
+      color: white;
       border: none;
-      font-size: 1.2rem;
+      padding: 12px 24px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .welcome button:hover {
+      background: #ff1493;
+    }
+    .section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .reviews {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .review {
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+    }
+    .review:last-child {
+      border-bottom: none;
+    }
+    footer {
+      background: #ffccf9;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 4px dotted #ff69b4;
+    }
+    .sobre-mi {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+      background: #ffe6f0;
+    }
+    .sobre-mi.active {
+      display: block;
+    }
+    .scroll-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d63384;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
     }
     .instagram-placeholder {
       background: #fff5fb;
-      padding: 1.5rem;
-      border-radius: 1rem;
+      padding: 3rem;
+      border-radius: 1.5rem;
       border: 2px dashed #ffb6c1;
       font-style: italic;
       color: #c13584;
       text-align: center;
-      margin: 2rem auto;
-      max-width: 280px;
+      margin: 3rem auto;
+      max-width: 700px;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+    }
+    .mascota {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      width: 100px;
+      animation: flotando 3s ease-in-out infinite;
+      z-index: 1000;
+    }
+    @keyframes flotando {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    .popup-resena {
+      position: fixed;
+      bottom: 120px;
+      left: 20px;
+      background: #fff0f5;
+      border: 2px dashed #ffb6c1;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
       font-size: 0.95rem;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      color: #d63384;
+      z-index: 999;
+      max-width: 240px;
+    }
+    .popup-resena button {
+      background: none;
+      border: none;
+      font-weight: bold;
+      color: #d63384;
+      float: right;
+      cursor: pointer;
     }
   </style>
 </head>
-<body class="home-body">
-
-  <audio id="bgm" src="assets/sounds/home-bgm.mp3" loop preload="auto"></audio>
-  <div id="popup-musica" class="popup-musica">
-    <p>💕 ¿Querés que te acompañemos con una dulce melodía?<br>🎵 Activá nuestra música kawaii 🍓</p>
-    <button id="musica-si">Sí, quiero</button>
-    <button id="musica-no">No, gracias</button>
-  </div>
-
-  <img src="assets/img/mascota-cupcake.png" alt="Mascota Cupcake" class="mascota-kawaii">
-  <div class="burbuja-dialogo" id="mensaje-mascota">
-    🍓 ¡Hola! No olvides dejar tu reseñita dulce abajo 💌
-    <button class="cerrar-burbuja" onclick="document.getElementById('mensaje-mascota').style.display='none'">✖</button>
-  </div>
-
-  <!-- Banner principal -->
-  <header class="banner">
-    <img src="assets/img/ariessweet-banner.png" alt="Banner AriessWeet" class="banner-img">
-    <div class="banner-texto">
-      <h1 id="saludo">¡Bienvenida a AriessWeet! 🍰</h1>
-      <p>Donde cada dulce tiene magia, color y mucho amor 💖</p>
-    </div>
-    <button id="cerrar-sesion" class="cerrar-btn">Cerrar sesión</button>
+<body>
+  <header>
+    <img src="assets/img/logo.png" alt="Logo AriessWeet" />
+    <h1>AriessWeet Delicias</h1>
+    <p>Una dulce manera de dar cariño</p>
   </header>
 
-  <!-- Botón para sección Sobre mí -->
-  <section class="seccion-kawaii">
-    <a href="sobremi.html" class="mp-button">Conocé nuestra historia 💖</a>
+  <section class="welcome">
+    <h2>Bienvenid@ a nuestro mundo dulce</h2>
+    <button id="ingresarBtn">Ingresar</button>
+    <div class="scroll-btn" onclick="document.getElementById('reviews').scrollIntoView({behavior: 'smooth'});">Ver Reseñas ↓</div>
   </section>
 
-  <!-- Sección de reseñas -->
-  <section id="reseñas" class="seccion-kawaii">
-    <h2>🍓 Sé parte de nuestro muro de reseñas 💖</h2>
-    <p>Nuestro pequeño salón de la fama dulce 🍰</p>
+  <section class="section sobre-mi" id="sobreMi">
+    <h2>Sobre mí</h2>
+    <p>En AriessWeet creemos que cada bocado es una forma de amor. Esta pasión nació con la intención de acompañar a las personas en sus momentos especiales, y hacer que cada día tenga un sabor inolvidable.</p>
+  </section>
 
-    <form id="review-form" class="formulario-opinion">
-      <input type="text" id="review-name" placeholder="Tu nombre" required />
-      <textarea id="review-text" placeholder="Tu mensaje dulce..." required></textarea>
-      <button type="submit">Enviar reseña 🍭</button>
+  <!-- Espacio para Instagram -->
+  <div class="instagram-placeholder">
+    📸 Muy pronto vas a poder ver aquí las últimas publicaciones de nuestro Instagram 💫
+  </div>
+
+  <section class="section reviews" id="reviews">
+    <h2>Reseñas más recientes</h2>
+    <div id="review-list"></div>
+    <form id="review-form">
+      <input type="text" id="review-text" placeholder="Escribí tu reseña" required />
+      <button type="submit">Enviar</button>
     </form>
-
-    <div id="review-list" class="opiniones-grid-columns">
-      <div id="columna-izquierda" class="opinion-columna"></div>
-      <div class="instagram-placeholder">
-        📸 Muy pronto vas a poder ver aquí las últimas publicaciones de nuestro Instagram con todas nuestras delicias kawaii 💫🍓
-      </div>
-      <div id="columna-derecha" class="opinion-columna"></div>
-    </div>
   </section>
 
-  <!-- Sección de pagos y contacto -->
-  <section class="seccion-kawaii">
-    <h2>💳 Pagá como quieras</h2>
-    <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a>
-    <a href="https://wa.me/59894295759" class="wpp-button">💌 Pedí por WhatsApp</a>
-  </section>
-
-  <!-- Footer kawaii -->
-  <footer class="footer-kawaii">
-    <p>Hecho con amor por AriessWeet 🍓</p>
-    <div class="footer-redes">
-      <a href="https://wa.me/59894295759" target="_blank">💬 WhatsApp</a>
-      <a href="https://www.instagram.com/ariessweet" target="_blank">📸 Instagram</a>
-    </div>
-    <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
+  <footer>
+    🧁 Hecho con mucho amor por AriessWeet · Todos los derechos reservados 💖
   </footer>
 
-  <!-- Botón flotante WhatsApp -->
-  <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
+  <!-- Mascota flotante -->
+  <img src="assets/img/mascota-cupcake.png" alt="Mascota cupcake" class="mascota" />
 
-  <!-- Firebase y funciones -->
+  <!-- Cartel para reseña -->
+  <div class="popup-resena" id="popupResena">
+    <button onclick="document.getElementById('popupResena').style.display='none'">×</button>
+    No olvides dejar tu reseña abajo 💬
+  </div>
+
+  <!-- Firebase + Script -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getDatabase, ref, push, onValue, query, limitToLast } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
     const firebaseConfig = {
-      apiKey: "AIzaSyCOxnc8vkjcFzLEsFtHkFmjCfwxH_y0DVU",
+      apiKey: "AIzaSyBN7ohoX7boeADUnovRwO-EjGH6bS43Cho",
       authDomain: "ariessweet2025.firebaseapp.com",
       databaseURL: "https://ariessweet2025-default-rtdb.firebaseio.com",
       projectId: "ariessweet2025",
       storageBucket: "ariessweet2025.appspot.com",
-      messagingSenderId: "468812407156",
-      appId: "1:468812407156:web:9858c84ae6bc04095e0c21",
-      measurementId: "G-WHQ77VLT0W"
+      messagingSenderId: "TU_ID",
+      appId: "TU_APP_ID"
     };
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
-    const reviewsRef = ref(db, 'reseñas');
+    const reviewRef = ref(db, 'reseñas');
 
-    document.getElementById("review-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const name = document.getElementById("review-name").value;
-      const text = document.getElementById("review-text").value;
-      push(reviewsRef, { name, text, date: Date.now() });
-      document.getElementById("review-form").reset();
-    });
-
-    onValue(reviewsRef, (snapshot) => {
+    const latestReviews = query(reviewRef, limitToLast(20));
+    onValue(latestReviews, (snapshot) => {
       const data = snapshot.val();
-      const reviews = [];
-      for (let id in data) {
-        reviews.push({ id, ...data[id] });
+      const reviewList = document.getElementById('review-list');
+      reviewList.innerHTML = '';
+      if (data) {
+        const entries = Object.values(data).reverse();
+        entries.forEach(review => {
+          const div = document.createElement('div');
+          div.className = 'review';
+          div.textContent = review.texto;
+          reviewList.appendChild(div);
+        });
       }
-      reviews.sort((a, b) => b.date - a.date);
-      const recent = reviews.slice(0, 20);
-
-      const colLeft = document.getElementById("columna-izquierda");
-      const colRight = document.getElementById("columna-derecha");
-      colLeft.innerHTML = "";
-      colRight.innerHTML = "";
-
-      recent.forEach((r, i) => {
-        const div = document.createElement("div");
-        div.className = "opinion-sticker";
-        div.innerHTML = `<strong>🍭 ${r.name}</strong><p>${r.text}</p>`;
-        if (i % 2 === 0) {
-          colLeft.appendChild(div);
-        } else {
-          colRight.appendChild(div);
-        }
-      });
     });
-  </script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const nombre = localStorage.getItem("usuario");
-      const saludo = document.getElementById("saludo");
-      if (nombre && saludo) {
-        saludo.textContent = `¡Hola ${nombre}! Bienvenid@ a AriessWeet 🍰`;
-      } else {
-        window.location.href = "index.html";
+    document.getElementById('review-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const texto = document.getElementById('review-text').value;
+      if (texto.trim()) {
+        push(reviewRef, { texto });
+        document.getElementById('review-text').value = '';
       }
+    });
 
-      document.getElementById("cerrar-sesion").addEventListener("click", () => {
-        localStorage.removeItem("usuario");
-        window.location.href = "index.html";
-      });
-
-      document.getElementById("anio-footer").textContent = new Date().getFullYear();
-
-      const bgm = document.getElementById("bgm");
-      document.getElementById("musica-si").onclick = () => {
-        document.getElementById("popup-musica").style.display = "none";
-        bgm.volume = 0.15;
-        bgm.play();
-      };
-      document.getElementById("musica-no").onclick = () => {
-        document.getElementById("popup-musica").style.display = "none";
-        bgm.pause();
-      };
+    const ingresarBtn = document.getElementById('ingresarBtn');
+    const audio = new Audio('assets/sounds/click.mp3');
+    ingresarBtn.addEventListener('click', () => {
+      audio.play();
+      document.getElementById('sobreMi').classList.add('active');
+      document.getElementById('sobreMi').scrollIntoView({ behavior: 'smooth' });
     });
   </script>
 </body>
