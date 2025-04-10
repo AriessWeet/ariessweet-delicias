@@ -85,6 +85,8 @@
     <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
   </footer>
 
+  <audio id="bgm" src="assets/sounds/home-bgm.mp3" loop preload="auto"></audio>
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const nombre = localStorage.getItem("usuario");
@@ -103,6 +105,19 @@
 
       document.getElementById("anio-footer").textContent = new Date().getFullYear();
     });
+
+    // Activar música al hacer clic o tocar
+    const bgm = document.getElementById("bgm");
+    if (bgm) {
+      bgm.volume = 0.15;
+      const iniciarMusica = () => {
+        bgm.play();
+        document.removeEventListener("click", iniciarMusica);
+        document.removeEventListener("touchstart", iniciarMusica);
+      };
+      document.addEventListener("click", iniciarMusica);
+      document.addEventListener("touchstart", iniciarMusica);
+    }
   </script>
 
 </body>
