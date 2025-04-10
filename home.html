@@ -70,6 +70,16 @@
   <!-- Botón flotante de WhatsApp -->
   <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
 
+  <!-- Footer kawaii -->
+  <footer class="footer-kawaii">
+    <p>Hecho con amor por AriessWeet 🍓</p>
+    <div class="footer-redes">
+      <a href="https://wa.me/59894295759" target="_blank">💬 WhatsApp</a>
+      <a href="https://www.instagram.com/ariessweet" target="_blank">📸 Instagram</a>
+    </div>
+    <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
+  </footer>
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const nombre = localStorage.getItem("usuario");
@@ -85,6 +95,9 @@
         localStorage.removeItem("usuario");
         window.location.href = "index.html";
       });
+
+      // Año automático en el footer
+      document.getElementById("anio-footer").textContent = new Date().getFullYear();
     });
   </script>
 

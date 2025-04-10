@@ -431,6 +431,35 @@ body {
   line-height: 1.6;
   font-size: 1rem;
   color: #6c2a61;
+}.footer-kawaii {
+  background-color: #ffe0f0;
+  color: #6c2a61;
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 4px solid #ffb6c1;
+  font-size: 0.9rem;
+  margin-top: 3rem;
 }
+
+.footer-kawaii p {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.footer-redes {
+  margin-bottom: 0.5rem;
+}
+
+.footer-redes a {
+  margin: 0 1rem;
+  color: #d63384;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-redes a:hover {
+  text-decoration: underline;
+}
+
 
 
