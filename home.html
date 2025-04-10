@@ -2,102 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AriessWeet Delicias</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AriessWeet | Home</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" type="image/png" href="assets/img/logo.png" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #fff0f5;
-      overflow-x: hidden;
-    }
-    header {
-      background: linear-gradient(to right, #ffb6c1, #ff69b4);
-      color: white;
-      padding: 20px;
-      text-align: center;
-      position: relative;
-    }
-    header img {
-      width: 80px;
-      position: absolute;
-      top: 10px;
-      left: 10px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    header p {
-      font-style: italic;
-      font-size: 1.1em;
-    }
-    .welcome {
-      text-align: center;
-      margin: 60px auto;
-    }
-    .welcome h2 {
-      font-size: 2em;
-      color: #d63384;
-    }
-    .welcome button {
-      background: #ff69b4;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1.1em;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .welcome button:hover {
-      background: #ff1493;
-    }
-    .section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .reviews {
-      background: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .review {
-      border-bottom: 1px solid #eee;
-      padding: 10px 0;
-    }
-    .review:last-child {
-      border-bottom: none;
-    }
-    footer {
-      background: #ffccf9;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      border-top: 4px dotted #ff69b4;
-    }
-    .sobre-mi {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-      background: #ffe6f0;
-    }
-    .sobre-mi.active {
-      display: block;
-    }
-    .scroll-btn {
-      display: inline-block;
-      margin-top: 20px;
-      background: #d63384;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-    }
     .instagram-placeholder {
       background: #fff5fb;
       padding: 3rem;
@@ -111,90 +20,167 @@
       font-size: 1.1rem;
       box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
     }
-    .mascota {
-      position: fixed;
-      bottom: 30px;
-      right: 20px;
-      width: 100px;
-      animation: flotando 3s ease-in-out infinite;
-      z-index: 1000;
+
+    .opiniones-kawaii {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-    @keyframes flotando {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+
+    .columna {
+      flex: 1;
+      min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-    .popup-resena {
-      position: fixed;
-      bottom: 120px;
-      left: 20px;
-      background: #fff0f5;
-      border: 2px dashed #ffb6c1;
-      padding: 1rem 1.5rem;
-      border-radius: 1rem;
+
+    .opinion-sticker {
+      background-color: #ffe4ec;
+      padding: 1rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       font-size: 0.95rem;
-      color: #d63384;
-      z-index: 999;
-      max-width: 240px;
+      color: #6c2a61;
+      border: 2px dashed #ffb6c1;
+      font-style: italic;
+      transition: transform 0.2s;
     }
-    .popup-resena button {
-      background: none;
-      border: none;
-      font-weight: bold;
-      color: #d63384;
-      float: right;
+
+    .opinion-sticker:hover {
+      transform: scale(1.05);
+    }
+
+    .instagram-placeholder {
+      align-self: center;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .mascota-flotante {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      width: 80px;
+      animation: flotar 3s ease-in-out infinite;
+      z-index: 10;
+    }
+
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .popup-musica {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #fff0f5;
+      border: 2px dashed #ff69b4;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      font-size: 0.9rem;
+      z-index: 100;
+    }
+
+    .cartel-resena {
+      background: #fff0f5;
+      border-left: 5px solid #ff69b4;
+      padding: 1rem;
+      margin: 2rem auto;
+      border-radius: 1rem;
+      position: relative;
+      max-width: 600px;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .cartel-resena .cerrar {
+      position: absolute;
+      top: 8px;
+      right: 12px;
       cursor: pointer;
+      color: #d63384;
+      font-weight: bold;
     }
   </style>
 </head>
-<body>
-  <header>
-    <img src="assets/img/logo.png" alt="Logo AriessWeet" />
-    <h1>AriessWeet Delicias</h1>
-    <p>Una dulce manera de dar cariño</p>
+<body class="home-body">
+
+  <!-- Mascota flotante -->
+  <img src="assets/img/mascota-cupcake.png" alt="Cupcake kawaii" class="mascota-flotante" />
+
+  <!-- Popup música -->
+  <div class="popup-musica" id="popup-musica">
+    ¿Querés activar la música de fondo? 🎵
+    <button onclick="activarMusica()">Sí</button>
+  </div>
+  <audio id="bgm" src="assets/sounds/home-bgm.mp3" loop preload="auto"></audio>
+
+  <!-- Banner -->
+  <header class="banner">
+    <img src="assets/img/ariessweet-banner.png" alt="Banner AriessWeet" class="banner-img">
+    <div class="banner-texto">
+      <h1 id="saludo">¡Bienvenida a AriessWeet! 🍰</h1>
+      <p>Donde cada dulce tiene magia, color y mucho amor 💖</p>
+    </div>
+    <button id="cerrar-sesion" class="cerrar-btn">Cerrar sesión</button>
   </header>
 
-  <section class="welcome">
-    <h2>Bienvenid@ a nuestro mundo dulce</h2>
-    <button id="ingresarBtn">Ingresar</button>
-    <div class="scroll-btn" onclick="document.getElementById('reviews').scrollIntoView({behavior: 'smooth'});">Ver Reseñas ↓</div>
+  <!-- Botón sobre mí -->
+  <section class="seccion-kawaii">
+    <a href="sobremi.html" class="mp-button">Conocé nuestra historia 💖</a>
   </section>
 
-  <section class="section sobre-mi" id="sobreMi">
-    <h2>Sobre mí</h2>
-    <p>En AriessWeet creemos que cada bocado es una forma de amor. Esta pasión nació con la intención de acompañar a las personas en sus momentos especiales, y hacer que cada día tenga un sabor inolvidable.</p>
-  </section>
-
-  <!-- Espacio para Instagram -->
-  <div class="instagram-placeholder">
-    📸 Muy pronto vas a poder ver aquí las últimas publicaciones de nuestro Instagram 💫
+  <!-- Cartel de reseñas -->
+  <div class="cartel-resena" id="cartel-resena">
+    🍓 No olvides dejar tu reseña y formar parte de nuestro salón de la fama dulce 🍰
+    <span class="cerrar" onclick="document.getElementById('cartel-resena').style.display='none'">✖</span>
   </div>
 
-  <section class="section reviews" id="reviews">
-    <h2>Reseñas más recientes</h2>
-    <div id="review-list"></div>
-    <form id="review-form">
-      <input type="text" id="review-text" placeholder="Escribí tu reseña" required />
-      <button type="submit">Enviar</button>
+  <!-- Sección de opiniones -->
+  <section class="seccion-kawaii">
+    <h2>💬 Opiniones</h2>
+    <div class="opiniones-kawaii">
+      <div class="columna" id="columna-izq">
+        <!-- Aquí se cargan 10 reseñas -->
+      </div>
+      <div class="instagram-placeholder">
+        📸 Muy pronto vas a poder ver aquí las últimas publicaciones de nuestro Instagram 💫
+      </div>
+      <div class="columna" id="columna-der">
+        <!-- Aquí se cargan otras 10 reseñas -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario -->
+  <section class="seccion-kawaii">
+    <form id="review-form" class="formulario-opinion">
+      <input type="text" id="review-name" placeholder="Tu nombre" required />
+      <textarea id="review-text" placeholder="Tu mensaje dulce..." required></textarea>
+      <button type="submit">Enviar reseña 🍭</button>
     </form>
   </section>
 
-  <footer>
-    🧁 Hecho con mucho amor por AriessWeet · Todos los derechos reservados 💖
+  <!-- Footer -->
+  <footer class="footer-kawaii">
+    <p>Hecho con amor por AriessWeet 🍓</p>
+    <div class="footer-redes">
+      <a href="https://wa.me/59894295759" target="_blank">💬 WhatsApp</a>
+      <a href="https://www.instagram.com/ariessweet" target="_blank">📸 Instagram</a>
+    </div>
+    <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
   </footer>
 
-  <!-- Mascota flotante -->
-  <img src="assets/img/mascota-cupcake.png" alt="Mascota cupcake" class="mascota" />
-
-  <!-- Cartel para reseña -->
-  <div class="popup-resena" id="popupResena">
-    <button onclick="document.getElementById('popupResena').style.display='none'">×</button>
-    No olvides dejar tu reseña abajo 💬
-  </div>
-
-  <!-- Firebase + Script -->
+  <!-- Scripts -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getDatabase, ref, push, onValue, query, limitToLast } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyBN7ohoX7boeADUnovRwO-EjGH6bS43Cho",
@@ -202,46 +188,81 @@
       databaseURL: "https://ariessweet2025-default-rtdb.firebaseio.com",
       projectId: "ariessweet2025",
       storageBucket: "ariessweet2025.appspot.com",
-      messagingSenderId: "TU_ID",
-      appId: "TU_APP_ID"
+      messagingSenderId: "468812407156",
+      appId: "1:468812407156:web:9858c84ae6bc04095e0c21",
     };
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
-    const reviewRef = ref(db, 'reseñas');
+    const reviewsRef = ref(db, 'reseñas');
 
-    const latestReviews = query(reviewRef, limitToLast(20));
-    onValue(latestReviews, (snapshot) => {
+    // Mostrar reseñas
+    onValue(reviewsRef, (snapshot) => {
       const data = snapshot.val();
-      const reviewList = document.getElementById('review-list');
-      reviewList.innerHTML = '';
+      const listaIzq = document.getElementById("columna-izq");
+      const listaDer = document.getElementById("columna-der");
+      listaIzq.innerHTML = "";
+      listaDer.innerHTML = "";
+
       if (data) {
-        const entries = Object.values(data).reverse();
-        entries.forEach(review => {
-          const div = document.createElement('div');
-          div.className = 'review';
-          div.textContent = review.texto;
-          reviewList.appendChild(div);
+        const todas = Object.values(data).sort((a, b) => b.fecha - a.fecha).slice(0, 20);
+        const mitad = Math.ceil(todas.length / 2);
+        const izq = todas.slice(0, mitad);
+        const der = todas.slice(mitad);
+
+        izq.forEach(r => {
+          const div = document.createElement("div");
+          div.className = "opinion-sticker";
+          div.innerHTML = `<strong>🍭 ${r.nombre}</strong><p>${r.texto}</p>`;
+          listaIzq.appendChild(div);
+        });
+
+        der.forEach(r => {
+          const div = document.createElement("div");
+          div.className = "opinion-sticker";
+          div.innerHTML = `<strong>🍭 ${r.nombre}</strong><p>${r.texto}</p>`;
+          listaDer.appendChild(div);
         });
       }
     });
 
-    document.getElementById('review-form').addEventListener('submit', (e) => {
+    document.getElementById("review-form").addEventListener("submit", (e) => {
       e.preventDefault();
-      const texto = document.getElementById('review-text').value;
-      if (texto.trim()) {
-        push(reviewRef, { texto });
-        document.getElementById('review-text').value = '';
+      const nombre = document.getElementById("review-name").value;
+      const texto = document.getElementById("review-text").value;
+      if (nombre && texto) {
+        push(reviewsRef, {
+          nombre,
+          texto,
+          fecha: Date.now()
+        });
+        e.target.reset();
       }
     });
+  </script>
 
-    const ingresarBtn = document.getElementById('ingresarBtn');
-    const audio = new Audio('assets/sounds/click.mp3');
-    ingresarBtn.addEventListener('click', () => {
-      audio.play();
-      document.getElementById('sobreMi').classList.add('active');
-      document.getElementById('sobreMi').scrollIntoView({ behavior: 'smooth' });
+  <script>
+    function activarMusica() {
+      document.getElementById('bgm').play();
+      document.getElementById('popup-musica').style.display = 'none';
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const nombre = localStorage.getItem("usuario");
+      const saludo = document.getElementById("saludo");
+      if (nombre && saludo) {
+        saludo.textContent = `¡Hola ${nombre}! Bienvenid@ a AriessWeet 🍰`;
+      } else {
+        window.location.href = "index.html";
+      }
+      document.getElementById("cerrar-sesion").addEventListener("click", () => {
+        localStorage.removeItem("usuario");
+        window.location.href = "index.html";
+      });
+
+      document.getElementById("anio-footer").textContent = new Date().getFullYear();
     });
   </script>
+
 </body>
 </html>

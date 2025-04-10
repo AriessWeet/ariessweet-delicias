@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +13,7 @@ body {
 
 /* Banner */
 .banner {
+  position: relative;
   text-align: center;
   background-color: #ffe0f0;
   padding: 2rem 1rem;
@@ -21,6 +22,7 @@ body {
 
 .banner-img {
   max-width: 100%;
+  height: auto;
   border-radius: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -46,8 +48,14 @@ body {
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
+.cerrar-btn:hover {
+  background-color: #e05697;
+}
+
+/* Secciones */
 .seccion-kawaii {
   padding: 2rem 1rem;
   text-align: center;
@@ -58,43 +66,20 @@ body {
   margin-bottom: 1rem;
 }
 
-.mp-button,
-.wpp-button {
-  display: inline-block;
-  margin: 0.5rem;
-  padding: 0.7rem 1.5rem;
-  border-radius: 2rem;
-  text-decoration: none;
-  color: white;
-  background-color: #ff69b4;
-  transition: background-color 0.3s ease;
-}
-
-.mp-button:hover,
-.wpp-button:hover {
-  background-color: #e05697;
-}
-
-.boton-wpp-flotante {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  background-color: #25d366;
-  color: white;
-  font-size: 1.5rem;
-  padding: 1rem;
-  border-radius: 50%;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
 /* Opiniones */
-.opiniones-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+.opiniones-kawaii {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 2rem;
-  padding: 0 1rem;
+}
+
+.columna {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .opinion-sticker {
@@ -106,16 +91,16 @@ body {
   color: #6c2a61;
   border: 2px dashed #ffb6c1;
   font-style: italic;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s;
 }
 
 .opinion-sticker:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 /* Formulario */
 .formulario-opinion {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -124,21 +109,22 @@ body {
 
 .formulario-opinion input,
 .formulario-opinion textarea {
-  width: 80%;
-  max-width: 400px;
-  padding: 0.7rem;
+  padding: 0.5rem;
   border-radius: 1rem;
   border: 1px solid #ccc;
+  width: 80%;
+  max-width: 400px;
+  font-family: inherit;
 }
 
 .formulario-opinion button {
   background-color: #ff69b4;
-  border: none;
   color: white;
-  padding: 0.6rem 1.5rem;
+  border: none;
+  padding: 0.5rem 1.5rem;
   border-radius: 2rem;
-  font-size: 1rem;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 .formulario-opinion button:hover {
@@ -147,30 +133,95 @@ body {
 
 /* Footer */
 .footer-kawaii {
-  background-color: #ffe0f0;
+  background-color: #ffccf9;
   padding: 1.5rem 1rem;
   text-align: center;
-  border-top: 4px solid #ffb6c1;
-  font-size: 0.9rem;
+  border-top: 4px dotted #ff69b4;
 }
 
-.footer-redes a {
-  margin: 0 0.5rem;
-  color: #d63384;
+.footer-kawaii a {
   text-decoration: none;
-  font-weight: bold;
-}.mascota-kawaii {
+  color: #d63384;
+  margin: 0 0.5rem;
+}
+
+/* Botón flotante */
+.boton-wpp-flotante {
   position: fixed;
-  bottom: 1rem;
-  left: 1rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: #25d366;
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 50;
+}
+
+/* Mascota flotante */
+.mascota-flotante {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
   width: 80px;
-  z-index: 999;
-  animation: flotando 3s ease-in-out infinite;
+  animation: flotar 3s ease-in-out infinite;
+  z-index: 10;
 }
 
-@keyframes flotando {
-  0% { transform: translateY(0); }
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
 }
 
+/* Popup música */
+.popup-musica {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: #fff0f5;
+  border: 2px dashed #ff69b4;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+  z-index: 100;
+}
+
+/* Cartel reseña */
+.cartel-resena {
+  background: #fff0f5;
+  border-left: 5px solid #ff69b4;
+  padding: 1rem;
+  margin: 2rem auto;
+  border-radius: 1rem;
+  position: relative;
+  max-width: 600px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.cartel-resena .cerrar {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  cursor: pointer;
+  color: #d63384;
+  font-weight: bold;
+}
+
+/* Placeholder Instagram */
+.instagram-placeholder {
+  background: #fff5fb;
+  padding: 3rem;
+  border-radius: 1.5rem;
+  border: 2px dashed #ffb6c1;
+  font-style: italic;
+  color: #c13584;
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 700px;
+  font-size: 1.1rem;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+}
