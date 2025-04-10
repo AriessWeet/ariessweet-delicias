@@ -192,27 +192,24 @@ body {
   border: 2px dashed #a6c9ff;
 }
 
-.opinion-sticker:hover {
-  transform: scale(1.03);
-}
-.aviso-feed {
-  text-align: center;
-  background-color: #fff8f1;
-  border: 2px dotted #ffc107;
-  font-weight: bold;
-  font-style: normal;
-}.opinion-feed-wrapper {
-  width: 100%;
+.opinion-feed-wrapper {
   display: flex;
   justify-content: center;
+  margin: 1rem 0;
 }
 
 .aviso-feed {
   background-color: #fff8f1;
-  border: 2px dotted #ffc107;
+  border: 2px dashed #ffc107;
   font-weight: bold;
   font-style: normal;
-  max-width: 400px;
   text-align: center;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  width: 100%;
+}
+
 }
 
