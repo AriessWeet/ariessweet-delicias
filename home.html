@@ -2,112 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AriessWeet | Home</title>
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" type="image/png" href="assets/img/logo.png" />
-  <style>
-    .instagram-placeholder {
-      background: #fff5fb;
-      padding: 3rem;
-      border-radius: 1.5rem;
-      border: 2px dashed #ffb6c1;
-      font-style: italic;
-      color: #c13584;
-      text-align: center;
-      margin: 3rem auto;
-      max-width: 700px;
-      font-size: 1.1rem;
-      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .opiniones-kawaii {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .columna {
-      flex: 1;
-      min-width: 250px;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .opinion-sticker {
-      background-color: #ffe4ec;
-      padding: 1rem;
-      border-radius: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      font-size: 0.95rem;
-      color: #6c2a61;
-      border: 2px dashed #ffb6c1;
-      font-style: italic;
-      transition: transform 0.2s;
-    }
-
-    .opinion-sticker:hover {
-      transform: scale(1.05);
-    }
-
-    .instagram-placeholder {
-      align-self: center;
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .mascota-flotante {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      width: 80px;
-      animation: flotar 3s ease-in-out infinite;
-      z-index: 10;
-    }
-
-    @keyframes flotar {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .popup-musica {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: #fff0f5;
-      border: 2px dashed #ff69b4;
-      padding: 1rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      font-size: 0.9rem;
-      z-index: 100;
-    }
-
-    .cartel-resena {
-      background: #fff0f5;
-      border-left: 5px solid #ff69b4;
-      padding: 1rem;
-      margin: 2rem auto;
-      border-radius: 1rem;
-      position: relative;
-      max-width: 600px;
-      text-align: center;
-      font-size: 1rem;
-    }
-
-    .cartel-resena .cerrar {
-      position: absolute;
-      top: 8px;
-      right: 12px;
-      cursor: pointer;
-      color: #d63384;
-      font-weight: bold;
-    }
-  </style>
 </head>
 <body class="home-body">
 
@@ -131,9 +29,9 @@
     <button id="cerrar-sesion" class="cerrar-btn">Cerrar sesión</button>
   </header>
 
-  <!-- Botón sobre mí -->
+  <!-- Botón sobre mí más lindo -->
   <section class="seccion-kawaii">
-    <a href="sobremi.html" class="mp-button">Conocé nuestra historia 💖</a>
+    <a href="sobremi.html" class="mp-button grande rosa">✨ Conocé nuestra historia 💖</a>
   </section>
 
   <!-- Cartel de reseñas -->
@@ -142,19 +40,15 @@
     <span class="cerrar" onclick="document.getElementById('cartel-resena').style.display='none'">✖</span>
   </div>
 
-  <!-- Sección de opiniones -->
+  <!-- Sección de opiniones en dos columnas -->
   <section class="seccion-kawaii">
     <h2>💬 Opiniones</h2>
     <div class="opiniones-kawaii">
-      <div class="columna" id="columna-izq">
-        <!-- Aquí se cargan 10 reseñas -->
-      </div>
+      <div class="columna" id="columna-izq"></div>
       <div class="instagram-placeholder">
         📸 Muy pronto vas a poder ver aquí las últimas publicaciones de nuestro Instagram 💫
       </div>
-      <div class="columna" id="columna-der">
-        <!-- Aquí se cargan otras 10 reseñas -->
-      </div>
+      <div class="columna" id="columna-der"></div>
     </div>
   </section>
 
@@ -167,17 +61,30 @@
     </form>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer-kawaii">
-    <p>Hecho con amor por AriessWeet 🍓</p>
-    <div class="footer-redes">
-      <a href="https://wa.me/59894295759" target="_blank">💬 WhatsApp</a>
-      <a href="https://www.instagram.com/ariessweet" target="_blank">📸 Instagram</a>
-    </div>
-    <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
-  </footer>
+  <!-- Sección de contacto -->
+  <section class="seccion-kawaii">
+    <h2>💖 Conectá con nosotras</h2>
+    <a href="https://wa.me/59894295759" class="mp-button">💬 Escribinos por WhatsApp</a>
+    <a href="https://www.instagram.com/ariessweet" class="mp-button rosa" target="_blank">📸 Seguínos en Instagram</a>
+    <a href="https://mpago.la/tu-link" class="mp-button verde">💳 Pagar con Mercado Pago</a>
+  </section>
 
-  <!-- Scripts -->
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
+
+<footer class="footer-kawaii">
+  <p>Hecho con amor por AriessWeet 🍓</p>
+  <div class="footer-redes">
+    <a href="https://wa.me/59894295759" target="_blank">💬 WhatsApp</a>
+    <a href="https://www.instagram.com/ariessweet" target="_blank">📸 Instagram</a>
+  </div>
+  <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
+  <br />
+  <small class="creditos">🌟 Página diseñada por Gabriel Spinelli</small>
+</footer>
+
+
+  <!-- Firebase + lógica de reseñas -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
     import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
@@ -189,14 +96,13 @@
       projectId: "ariessweet2025",
       storageBucket: "ariessweet2025.appspot.com",
       messagingSenderId: "468812407156",
-      appId: "1:468812407156:web:9858c84ae6bc04095e0c21",
+      appId: "1:468812407156:web:9858c84ae6bc04095e0c21"
     };
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
     const reviewsRef = ref(db, 'reseñas');
 
-    // Mostrar reseñas
     onValue(reviewsRef, (snapshot) => {
       const data = snapshot.val();
       const listaIzq = document.getElementById("columna-izq");
@@ -241,6 +147,7 @@
     });
   </script>
 
+  <!-- Otros scripts -->
   <script>
     function activarMusica() {
       document.getElementById('bgm').play();
@@ -255,6 +162,7 @@
       } else {
         window.location.href = "index.html";
       }
+
       document.getElementById("cerrar-sesion").addEventListener("click", () => {
         localStorage.removeItem("usuario");
         window.location.href = "index.html";
