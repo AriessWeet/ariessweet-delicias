@@ -19,6 +19,11 @@
     <button id="cerrar-sesion" class="cerrar-btn">Cerrar sesión</button>
   </header>
 
+  <!-- Botón para sección Sobre mí -->
+  <section class="seccion-kawaii">
+    <a href="sobremi.html" class="mp-button">Conocé nuestra historia 💖</a>
+  </section>
+
   <!-- Contenido principal -->
   <main class="contenido">
     <section class="seccion-kawaii opiniones-kawaii">
@@ -49,3 +54,56 @@
         <div class="opinion-sticker">“El pedido llegó perfecto, y con un olor riquísimo 😋” — Flor</div>
         <div class="opinion-sticker">“¡No puedo parar de recomendarles! 💌” — Dani</div>
         <div class="opinion-sticker">“Se nota el cariño en cada detalle 💝” — Clari</div>
+        <div class="opinion-sticker">“Parecía salida de un cuento de hadas 🧚” — Mika</div>
+        <div class="opinion-sticker">“Lo más dulce del mundo, literalmente 🍭” — Pau</div>
+        <div class="opinion-sticker">“¡Ya quiero volver a pedir! 🐻🎂” — @chocolovers</div>
+      </div>
+    </section>
+
+    <section class="seccion-kawaii">
+      <h2>💳 Pagá como quieras</h2>
+      <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a>
+      <a href="https://wa.me/59894295759" class="wpp-button">💬 Pedí por WhatsApp</a>
+    </section>
+
+    <section class="seccion-kawaii aviso-instagram">
+      <h2>📸 Próximamente...</h2>
+      <p>Muy pronto vas a poder ver nuestro feed de Instagram directo desde esta web 💫</p>
+    </section>
+  </main>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
+
+  <!-- Footer kawaii -->
+  <footer class="footer-kawaii">
+    <p>Hecho con amor por AriessWeet 🍓</p>
+    <div class="footer-redes">
+      <a href="https://wa.me/59894295759" target="_blank">💬 WhatsApp</a>
+      <a href="https://www.instagram.com/ariessweet" target="_blank">📸 Instagram</a>
+    </div>
+    <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const nombre = localStorage.getItem("usuario");
+      const saludo = document.getElementById("saludo");
+
+      if (nombre && saludo) {
+        saludo.textContent = `¡Hola ${nombre}! Bienvenid@ a AriessWeet 🍰`;
+      } else {
+        window.location.href = "index.html";
+      }
+
+      document.getElementById("cerrar-sesion").addEventListener("click", () => {
+        localStorage.removeItem("usuario");
+        window.location.href = "index.html";
+      });
+
+      document.getElementById("anio-footer").textContent = new Date().getFullYear();
+    });
+  </script>
+
+</body>
+</html>
