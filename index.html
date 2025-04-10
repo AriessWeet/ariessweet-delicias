@@ -6,6 +6,77 @@
   <title>AriessWeet</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .bienvenida-body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to right, #ffe0f0, #fff0f5);
+      color: #6c2a61;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card-ingreso {
+      background-color: #fff;
+      padding: 2.5rem;
+      border-radius: 2rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .logo-mini {
+      width: 80px;
+      margin-bottom: 1rem;
+    }
+
+    .titulo-bienvenida {
+      font-size: 2rem;
+      color: #d63384;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitulo {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .formulario-kawaii input {
+      padding: 0.7rem 1rem;
+      border: 2px solid #ffb6c1;
+      border-radius: 1.5rem;
+      width: 100%;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .boton-ingreso {
+      background: linear-gradient(to right, #ff69b4, #ff85c1);
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding: 0.7rem 1.5rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .boton-ingreso:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #e05697, #ff9acb);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body class="bienvenida-body">
 
