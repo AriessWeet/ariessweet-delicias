@@ -7,45 +7,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    .popup-musica {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(255, 240, 245, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-
-    .popup-musica-contenido {
-      background: white;
-      border: 3px dashed #ffb6c1;
-      padding: 2rem;
-      border-radius: 1.5rem;
+    .formulario-opinion {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: #fff0f5;
+      border-radius: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
       text-align: center;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
-
-    .popup-musica h2 {
-      color: #d63384;
-      margin-bottom: 1rem;
+    .formulario-opinion input,
+    .formulario-opinion textarea {
+      width: 90%;
+      padding: 0.7rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ffb6c1;
+      border-radius: 1rem;
+      font-family: 'Quicksand', sans-serif;
     }
-
-    .popup-musica button {
-      background: linear-gradient(to right, #ff69b4, #ff85c1);
-      border: none;
+    .formulario-opinion button {
+      background-color: #ff69b4;
       color: white;
-      font-weight: bold;
-      padding: 0.7rem 1.5rem;
+      border: none;
+      padding: 0.6rem 1.5rem;
       border-radius: 2rem;
       cursor: pointer;
       font-size: 1rem;
-      transition: transform 0.2s;
     }
-
-    .popup-musica button:hover {
-      transform: scale(1.05);
-      background: linear-gradient(to right, #e05697, #ff9acb);
+    .formulario-opinion button:hover {
+      background-color: #e05697;
+    }
+    .mensaje-invitacion {
+      text-align: center;
+      font-size: 1.1rem;
+      margin: 2rem 1rem 1rem;
+      color: #6c2a61;
     }
   </style>
 </head>
@@ -79,7 +77,7 @@
   <main class="contenido">
     <section class="seccion-kawaii opiniones-kawaii">
       <h2>💬 Opiniones</h2>
-      <div class="opiniones-grid">
+      <div class="opiniones-grid" id="opinionesContainer">
         <div class="opinion-sticker">“La Red Velvet fue un espectáculo 😍” — Luciana</div>
         <div class="opinion-sticker">“Todo llegó en hora y super fresco 🍓” — @dulceamor</div>
         <div class="opinion-sticker">“Nunca vi una torta tan linda 🎂✨” — Mili</div>
@@ -97,18 +95,18 @@
             📸 Muy pronto vas a poder ver aquí las últimas publicaciones de nuestro Instagram 💫
           </div>
         </div>
-
-        <div class="opinion-sticker">“Nunca me fallan, ¡una delicia tras otra! 🎀” — Sofi</div>
-        <div class="opinion-sticker">“Pedí para un cumple y fue un éxito total 🥳” — Leo</div>
-        <div class="opinion-sticker">“La decoración es un sueño, me enamoré 💫” — Agus</div>
-        <div class="opinion-sticker">“¡Gracias por tanto amor en cada pastelito! 🧁” — Ani</div>
-        <div class="opinion-sticker">“El pedido llegó perfecto, y con un olor riquísimo 😋” — Flor</div>
-        <div class="opinion-sticker">“¡No puedo parar de recomendarles! 💌” — Dani</div>
-        <div class="opinion-sticker">“Se nota el cariño en cada detalle 💝” — Clari</div>
-        <div class="opinion-sticker">“Parecía salida de un cuento de hadas 🧚” — Mika</div>
-        <div class="opinion-sticker">“Lo más dulce del mundo, literalmente 🍭” — Pau</div>
-        <div class="opinion-sticker">“¡Ya quiero volver a pedir! 🐻🎂” — @chocolovers</div>
       </div>
+
+      <p class="mensaje-invitacion">
+        💌 ¡Sé parte de nuestro muro de reseñas!<br>
+        Nuestro pequeño salón de la fama dulce, donde cada historia cuenta 🍓
+      </p>
+
+      <form class="formulario-opinion" id="formOpiniones">
+        <input type="text" id="nombreOpinion" placeholder="Tu nombre o @usuario..." required />
+        <textarea id="mensajeOpinion" rows="3" placeholder="Escribí tu reseña..." required></textarea>
+        <button type="submit">Enviar opinión 🍭</button>
+      </form>
     </section>
 
     <section class="seccion-kawaii">
@@ -123,10 +121,8 @@
     </section>
   </main>
 
-  <!-- Botón flotante de WhatsApp -->
   <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
 
-  <!-- Footer kawaii -->
   <footer class="footer-kawaii">
     <p>Hecho con amor por AriessWeet 🍓</p>
     <div class="footer-redes">
@@ -156,15 +152,41 @@
 
       document.getElementById("anio-footer").textContent = new Date().getFullYear();
 
+      // Música
       const bgm = document.getElementById("bgm");
       const popup = document.getElementById("popupMusica");
       const botonMusica = document.getElementById("activarMusica");
-
       botonMusica.addEventListener("click", () => {
         bgm.volume = 0.15;
         bgm.play();
         popup.style.display = "none";
       });
+
+      // Opiniones del visitante
+      const formulario = document.getElementById("formOpiniones");
+      const contenedor = document.getElementById("opinionesContainer");
+
+      const opinionesGuardadas = JSON.parse(localStorage.getItem("opinionesKawaii")) || [];
+      opinionesGuardadas.forEach(op => agregarSticker(op));
+
+      formulario.addEventListener("submit", e => {
+        e.preventDefault();
+        const nombre = document.getElementById("nombreOpinion").value.trim();
+        const mensaje = document.getElementById("mensajeOpinion").value.trim();
+        if (!nombre || !mensaje) return;
+        const nuevaOpinion = { nombre, mensaje };
+        agregarSticker(nuevaOpinion);
+        opinionesGuardadas.push(nuevaOpinion);
+        localStorage.setItem("opinionesKawaii", JSON.stringify(opinionesGuardadas));
+        formulario.reset();
+      });
+
+      function agregarSticker({ nombre, mensaje }) {
+        const div = document.createElement("div");
+        div.className = "opinion-sticker";
+        div.textContent = `“${mensaje}” — ${nombre}`;
+        contenedor.appendChild(div);
+      }
     });
   </script>
 
