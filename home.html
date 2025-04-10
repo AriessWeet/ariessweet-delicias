@@ -59,6 +59,26 @@
       color: #6c2a61;
       margin: 2rem auto;
     }
+    .mascota-kawaii {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      width: 80px;
+      z-index: 9999;
+    }
+    .burbuja-dialogo {
+      position: fixed;
+      bottom: 7rem;
+      left: 1.5rem;
+      background: #fff0f5;
+      border: 2px dashed #ffb6c1;
+      padding: 1rem;
+      border-radius: 1rem;
+      max-width: 220px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-size: 0.9rem;
+      color: #d63384;
+    }
   </style>
 </head>
 <body class="home-body">
@@ -69,6 +89,9 @@
     <button id="musica-si">Sí, quiero</button>
     <button id="musica-no">No, gracias</button>
   </div>
+
+  <img src="assets/img/mascota-cupcake.png" alt="Mascota Cupcake" class="mascota-kawaii">
+  <div class="burbuja-dialogo" id="mensaje-mascota">🍓 ¡Hola! No olvides dejar tu reseñita dulce abajo 💌</div>
 
   <header class="banner">
     <img src="assets/img/ariessweet-banner.png" alt="Banner AriessWeet" class="banner-img">
