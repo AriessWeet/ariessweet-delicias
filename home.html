@@ -1,37 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AriessWeet Delicias</title>
-  <link rel="stylesheet" href="estilos.css" />
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AriessWeet | Home</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+<body class="home-body">
 
-<body>
-  <!-- Secciones del sitio -->
-  <header>
-    <h1>Bienvenidos a AriessWeet Delicias</h1>
+  <!-- Banner -->
+  <header class="banner">
+    <img src="assets/img/ariessweet-banner.png" alt="Banner AriessWeet" class="banner-img">
+    <div class="banner-texto">
+      <h1 id="saludo">¡Bienvenida a AriessWeet! 🍰</h1>
+      <p>Donde cada dulce tiene magia, color y mucho amor 💖</p>
+    </div>
+    <button id="cerrar-sesion" class="cerrar-btn">Cerrar sesión</button>
   </header>
 
-  <section id="reseñas">
-    <h2>Reseñas</h2>
-    <form id="formularioReseña">
-      <input type="text" id="nombre" placeholder="Tu nombre" required>
-      <textarea id="mensaje" placeholder="Escribe tu reseña" required></textarea>
-      <button type="submit">Enviar reseña</button>
-    </form>
-    <div id="listaReseñas"></div>
+  <!-- Botón Sobre mí -->
+  <section class="seccion-kawaii">
+    <a href="sobremi.html" class="mp-button">Conocé nuestra historia 💖</a>
   </section>
 
-  <footer>
-    <p>&copy; 2025 AriessWeet. Con dulzura para vos 🍰</p>
+  <!-- Reseñas -->
+  <section id="reseñas" class="seccion-kawaii">
+    <h2>🍓 Sé parte de nuestro muro de reseñas 💖</h2>
+    <p>Nuestro pequeño salón de la fama dulce 🍰</p>
+
+    <form id="review-form" class="formulario-opinion">
+      <input type="text" id="review-name" placeholder="Tu nombre" required />
+      <textarea id="review-text" placeholder="Tu mensaje dulce..." required></textarea>
+      <button type="submit">Enviar reseña 🍭</button>
+    </form>
+
+    <div id="review-list" class="opiniones-grid">
+      <!-- Aquí van las reseñas fijas -->
+    </div>
+  </section>
+
+  <!-- Métodos de pago -->
+  <section class="seccion-kawaii">
+    <h2>💳 Pagá como quieras</h2>
+    <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a>
+    <a href="https://wa.me/59894295759" class="wpp-button">💬 Pedí por WhatsApp</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-kawaii">
+    <p>Hecho con amor por AriessWeet 🍓</p>
+    <div class="footer-redes">
+      <a href="https://wa.me/59894295759" target="_blank">💬 WhatsApp</a>
+      <a href="https://www.instagram.com/ariessweet" target="_blank">📸 Instagram</a>
+    </div>
+    <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
   </footer>
 
-  <script>
-    // Configuración de Firebase
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
+
+  <!-- Firebase SDK v9 Módulos -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
     const firebaseConfig = {
       apiKey: "AIzaSyCOxnc8vkjcFzLEsFtHkFmjCfwxH_y0DVU",
       authDomain: "ariessweet2025.firebaseapp.com",
@@ -43,40 +75,67 @@
       measurementId: "G-WHQ77VLT0W"
     };
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const reseñasRef = ref(db, "reseñas");
 
-    const reseñasRef = db.ref("reseñas");
-    const formulario = document.getElementById("formularioReseña");
-    const listaReseñas = document.getElementById("listaReseñas");
-
-    formulario.addEventListener("submit", (e) => {
+    // Envío de reseñas
+    document.getElementById("review-form").addEventListener("submit", (e) => {
       e.preventDefault();
-      const nombre = document.getElementById("nombre").value;
-      const mensaje = document.getElementById("mensaje").value;
-      const nuevaReseña = {
-        name: nombre,
-        text: mensaje,
+      const name = document.getElementById("review-name").value;
+      const text = document.getElementById("review-text").value;
+
+      push(reseñasRef, {
+        name,
+        text,
         date: Date.now()
-      };
-      reseñasRef.push(nuevaReseña);
-      formulario.reset();
+      });
+
+      document.getElementById("review-form").reset();
     });
 
-    reseñasRef.limitToLast(20).on("value", (snapshot) => {
-      listaReseñas.innerHTML = "";
+    // Mostrar reseñas
+    onValue(reseñasRef, (snapshot) => {
+      const data = snapshot.val();
+      const lista = document.getElementById("review-list");
+      lista.innerHTML = "";
+
       const reseñas = [];
-      snapshot.forEach(child => {
-        reseñas.push(child.val());
-      });
-      reseñas.reverse();
-      reseñas.forEach(reseña => {
+      for (let id in data) {
+        reseñas.push({ id, ...data[id] });
+      }
+
+      // Solo las 20 más recientes
+      reseñas.sort((a, b) => b.date - a.date);
+      const ultimas20 = reseñas.slice(0, 20);
+
+      ultimas20.forEach((r) => {
         const div = document.createElement("div");
-        div.innerHTML = `<strong>${reseña.name}</strong>: ${reseña.text}`;
-        listaReseñas.appendChild(div);
+        div.className = "opinion-sticker";
+        div.innerHTML = `<strong>🍭 ${r.name}</strong><p>${r.text}</p>`;
+        lista.appendChild(div);
       });
     });
   </script>
-</body>
 
+  <!-- Otros scripts -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const nombre = localStorage.getItem("usuario");
+      const saludo = document.getElementById("saludo");
+      if (nombre && saludo) {
+        saludo.textContent = `¡Hola ${nombre}! Bienvenid@ a AriessWeet 🍰`;
+      } else {
+        window.location.href = "index.html";
+      }
+
+      document.getElementById("cerrar-sesion").addEventListener("click", () => {
+        localStorage.removeItem("usuario");
+        window.location.href = "index.html";
+      });
+
+      document.getElementById("anio-footer").textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
 </html>
