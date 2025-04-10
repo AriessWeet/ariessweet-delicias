@@ -159,4 +159,18 @@ body {
   color: #d63384;
   text-decoration: none;
   font-weight: bold;
+}.mascota-kawaii {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  width: 80px;
+  z-index: 999;
+  animation: flotando 3s ease-in-out infinite;
 }
+
+@keyframes flotando {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
