@@ -159,71 +159,8 @@ body {
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
-.opiniones-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
 
-.opinion-sticker {
-  background-color: #ffe4ec;
-  padding: 1rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-size: 0.95rem;
-  color: #6c2a61;
-  border: 2px dashed #ffb6c1;
-  font-style: italic;
-  transition: transform 0.2s;
-}
-
-.opinion-sticker:hover {
-  transform: scale(1.05);
-}.opiniones-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.opinion-sticker {
-  background-color: #ffe4ec;
-  padding: 1rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-size: 0.95rem;
-  color: #6c2a61;
-  border: 2px dashed #ffb6c1;
-  font-style: italic;
-  transition: transform 0.2s;
-}
-
-.opinion-sticker:hover {
-  transform: scale(1.05);
-}
-.opiniones-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.opinion-sticker {
-  background-color: #ffe4ec;
-  padding: 1rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-size: 0.95rem;
-  color: #6c2a61;
-  border: 2px dashed #ffb6c1;
-  font-style: italic;
-  transition: transform 0.2s;
-}
-
-.opinion-sticker:hover {
-  transform: scale(1.05);
-}/* Opiniones estilo chat kawaii */
+/* Opiniones estilo chat kawaii */
 .opiniones-grid {
   display: flex;
   flex-direction: column;
@@ -251,6 +188,10 @@ body {
 
 .opiniones-grid .opinion-sticker:nth-child(even) {
   align-self: flex-end;
-  background-color: #d
+  background-color: #dceaff;
+  border: 2px dashed #a6c9ff;
+}
 
-
+.opinion-sticker:hover {
+  transform: scale(1.03);
+}
