@@ -201,4 +201,18 @@ body {
   border: 2px dotted #ffc107;
   font-weight: bold;
   font-style: normal;
+}.opinion-feed-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
+
+.aviso-feed {
+  background-color: #fff8f1;
+  border: 2px dotted #ffc107;
+  font-weight: bold;
+  font-style: normal;
+  max-width: 400px;
+  text-align: center;
+}
+
