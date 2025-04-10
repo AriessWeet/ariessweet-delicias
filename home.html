@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AriessWeet</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AriessWeet | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bienvenida-body">
+<body class="home-body">
 
-  <div class="card-ingreso">
-    <img src="assets/img/logo-mini.png" alt="Logo mini Ariessweet" class="logo-mini" />
-    <h1 class="titulo-bienvenida">¡Bienvenida a AriessWeet! 🍓</h1>
-    <p class="subtitulo">Donde los dulces nacen del amor y la ternura 💖</p>
+  <!-- Banner principal -->
+  <header class="banner">
+    <img src="assets/img/ariessweet-banner.png" alt="Banner AriessWeet" class="banner-img">
+    <div class="banner-texto">
+      <h1 id="saludo">¡Bienvenida a AriessWeet! 🍰</h1>
+      <p>Donde cada dulce tiene magia, color y mucho amor 💖</p>
+    </div>
+    <button id="cerrar-sesion" class="cerrar-btn">Cerrar sesión</button>
+  </header>
 
-    <form id="formulario" class="formulario-kawaii">
-      <input type="text" id="nombre" placeholder="Escribí tu nombre..." required />
-      <button type="submit" class="boton-ingreso">Ingresar 🍰</button>
-    </form>
-  </div>
+  <!-- Contenido principal -->
+  <main class="contenido">
+    <section class="seccion-kawaii opiniones-kawaii">
+      <h2>💬 Opiniones</h2>
+      <div class="opiniones-grid">
+        <div class="opinion-sticker">“La Red Velvet fue un espectáculo 😍” — Luciana</div>
+        <div class="opinion-sticker">“Todo llegó en hora y super fresco 🍓” — @dulceamor</div>
+        <div class="opinion-sticker">“Nunca vi una torta tan linda 🎂✨” — Mili</div>
+        <div class="opinion-sticker">“¡Ya van 3 veces que pido! 💖” — @fanpastel</div>
+        <div class="opinion-sticker">“El packaging es lo más tierno 🐰🍰” — Juli</div>
+        <div class="opinion-sticker">“Mi hijo quedó feliz con los cupcakes 🧁” — Caro</div>
+        <div class="opinion-sticker">“Son un 1000/10, como siempre ✨” — @foodie.uy</div>
+        <div class="opinion-sticker">“Mis amigas flashearon con la torta 🦄” — Naty</div>
+        <div class="opinion-sticker">“¡Sigan así! Todo hermoso 💕” — Vale</div>
+        <div class="opinion-sticker">“Un amor desde que pedís hasta que comés 🍬” — Ro</div>
 
-  <!-- Sonido kawaii -->
-  <audio id="sonido-click" src="assets/sounds/click.mp3" preload="auto"></audio>
+        <!-- Aviso de feed Instagram centrado -->
+        <div class="opinion-feed-wrapper">
+          <div class="opinion-sticker aviso-feed">
+            📸 Muy pronto vas a poder ver aquí las últimas publicaciones de nuestro Instagram 💫
+          </div>
+        </div>
 
-  <script>
-    document.getElementById("formulario").addEventListener("submit", function(event) {
-      event.preventDefault();
-      const nombre = document.getElementById("nombre").value;
-      localStorage.setItem("usuario", nombre);
-
-      const sonido = document.getElementById("sonido-click");
-      if (sonido) sonido.play();
-
-      setTimeout(() => {
-        window.location.href = "home.html";
-      }, 300); // pequeño retardo para que se escuche antes de redirigir
-    });
-  </script>
-
-</body>
-</html>
+        <div class="opinion-sticker">“Nunca me fallan, ¡una delicia tras otra! 🎀” — Sofi</div>
+        <div class="opinion-sticker">“Pedí para un cumple y fue un éxito total 🥳” — Leo</div>
+        <div class="opinion-sticker">“La decoración es un sueño, me enamoré 💫” — Agus</div>
+        <div class="opinion-sticker">“¡Gracias por tanto amor en cada pastelito! 🧁” — Ani</div>
+        <div class="opinion-sticker">“El pedido llegó perfecto, y con un olor riquísimo 😋” — Flor</div>
+        <div class="opinion-sticker">“¡No puedo parar de recomendarles! 💌” — Dani</div>
+        <div class="opinion-sticker">“Se nota el cariño en cada detalle 💝” — Clari</div>
