@@ -1,4 +1,4 @@
-/* Reset y base */
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +13,6 @@ body {
 
 /* Banner */
 .banner {
-  position: relative;
   text-align: center;
   background-color: #ffe0f0;
   padding: 2rem 1rem;
@@ -22,7 +21,6 @@ body {
 
 .banner-img {
   max-width: 100%;
-  height: auto;
   border-radius: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -48,16 +46,10 @@ body {
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.cerrar-btn:hover {
-  background-color: #e05697;
-}
-
-/* Secciones */
 .seccion-kawaii {
-  margin: 2rem 1rem;
+  padding: 2rem 1rem;
   text-align: center;
 }
 
@@ -66,7 +58,8 @@ body {
   margin-bottom: 1rem;
 }
 
-.mp-button, .wpp-button {
+.mp-button,
+.wpp-button {
   display: inline-block;
   margin: 0.5rem;
   padding: 0.7rem 1.5rem;
@@ -77,82 +70,11 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.mp-button:hover, .wpp-button:hover {
+.mp-button:hover,
+.wpp-button:hover {
   background-color: #e05697;
 }
 
-/* Opiniones */
-.opiniones-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  margin-top: 2rem;
-  padding: 0 1rem;
-}
-
-.opinion-sticker {
-  background-color: #fff5f7;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  font-size: 0.95rem;
-  color: #6c2a61;
-  font-style: italic;
-  border: 2px dashed #ffb6c1;
-}
-
-/* Formulario reseñas */
-.formulario-opinion {
-  max-width: 500px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.formulario-opinion input,
-.formulario-opinion textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-family: 'Quicksand', sans-serif;
-}
-
-.formulario-opinion button {
-  background-color: #ff99cc;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.formulario-opinion button:hover {
-  background-color: #e05697;
-}
-
-/* Footer */
-.footer-kawaii {
-  text-align: center;
-  padding: 2rem 1rem;
-  background-color: #ffe0f0;
-  border-top: 3px solid #ffb6c1;
-  color: #6c2a61;
-}
-
-.footer-kawaii a {
-  margin: 0 0.5rem;
-  color: #d63384;
-  text-decoration: none;
-}
-
-.footer-kawaii a:hover {
-  text-decoration: underline;
-}
-
-/* Botón WhatsApp flotante */
 .boton-wpp-flotante {
   position: fixed;
   bottom: 1.5rem;
@@ -164,5 +86,77 @@ body {
   border-radius: 50%;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 100;
+}
+
+/* Opiniones */
+.opiniones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.opinion-sticker {
+  background-color: #ffe4ec;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 0.95rem;
+  color: #6c2a61;
+  border: 2px dashed #ffb6c1;
+  font-style: italic;
+  transition: transform 0.2s ease;
+}
+
+.opinion-sticker:hover {
+  transform: scale(1.03);
+}
+
+/* Formulario */
+.formulario-opinion {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.formulario-opinion input,
+.formulario-opinion textarea {
+  width: 80%;
+  max-width: 400px;
+  padding: 0.7rem;
+  border-radius: 1rem;
+  border: 1px solid #ccc;
+}
+
+.formulario-opinion button {
+  background-color: #ff69b4;
+  border: none;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.formulario-opinion button:hover {
+  background-color: #e05697;
+}
+
+/* Footer */
+.footer-kawaii {
+  background-color: #ffe0f0;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-top: 4px solid #ffb6c1;
+  font-size: 0.9rem;
+}
+
+.footer-redes a {
+  margin: 0 0.5rem;
+  color: #d63384;
+  text-decoration: none;
+  font-weight: bold;
 }
