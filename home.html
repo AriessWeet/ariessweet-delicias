@@ -37,11 +37,32 @@
     .popup-musica button:hover {
       background-color: #e05697;
     }
+    .opiniones-grid-columns {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .opinion-columna {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .instagram-placeholder {
+      width: 100%;
+      text-align: center;
+      background-color: #ffe4ec;
+      padding: 1rem;
+      border-radius: 1.5rem;
+      font-style: italic;
+      color: #6c2a61;
+      margin: 2rem auto;
+    }
   </style>
 </head>
 <body class="home-body">
 
-  <!-- Música fondo -->
   <audio id="bgm" src="assets/sounds/home-bgm.mp3" loop preload="auto"></audio>
   <div id="popup-musica" class="popup-musica">
     <p>💕 ¿Querés que te acompañemos con una dulce melodía?<br>🎵 Activá nuestra música kawaii 🍓</p>
@@ -49,7 +70,6 @@
     <button id="musica-no">No, gracias</button>
   </div>
 
-  <!-- Banner -->
   <header class="banner">
     <img src="assets/img/ariessweet-banner.png" alt="Banner AriessWeet" class="banner-img">
     <div class="banner-texto">
@@ -59,12 +79,10 @@
     <button id="cerrar-sesion" class="cerrar-btn">Cerrar sesión</button>
   </header>
 
-  <!-- Botón Sobre mí -->
   <section class="seccion-kawaii">
     <a href="sobremi.html" class="mp-button">Conocé nuestra historia 💖</a>
   </section>
 
-  <!-- Reseñas -->
   <section id="reseñas" class="seccion-kawaii">
     <h2>🍓 Sé parte de nuestro muro de reseñas 💖</h2>
     <p>Nuestro pequeño salón de la fama dulce 🍰</p>
@@ -75,19 +93,19 @@
       <button type="submit">Enviar reseña 🍭</button>
     </form>
 
-    <div id="review-list" class="opiniones-grid">
-      <!-- Reseñas fijas y nuevas se cargan aquí -->
+    <div class="opiniones-grid-columns">
+      <div id="columna-izquierda" class="opinion-columna"></div>
+      <div class="instagram-placeholder">📸 Muy pronto vas a poder ver aquí las últimas publicaciones de nuestro Instagram 💫</div>
+      <div id="columna-derecha" class="opinion-columna"></div>
     </div>
   </section>
 
-  <!-- Métodos de pago -->
   <section class="seccion-kawaii">
     <h2>💳 Pagá como quieras</h2>
     <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a>
     <a href="https://wa.me/59894295759" class="wpp-button">💬 Pedí por WhatsApp</a>
   </section>
 
-  <!-- Footer -->
   <footer class="footer-kawaii">
     <p>Hecho con amor por AriessWeet 🍓</p>
     <div class="footer-redes">
@@ -97,10 +115,8 @@
     <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
   </footer>
 
-  <!-- WhatsApp flotante -->
   <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
 
-  <!-- Firebase SDK v9 -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
     import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
@@ -136,8 +152,11 @@
 
     onValue(reseñasRef, (snapshot) => {
       const data = snapshot.val();
-      const lista = document.getElementById("review-list");
-      lista.innerHTML = "";
+      const izq = document.getElementById("columna-izquierda");
+      const der = document.getElementById("columna-derecha");
+      izq.innerHTML = "";
+      der.innerHTML = "";
+
       const reseñas = [];
       for (let id in data) {
         reseñas.push({ id, ...data[id] });
@@ -158,16 +177,16 @@
         "Un amor desde que pedís hasta que comés 🍬 — Ro"
       ];
 
-      [...ultimas, ...fijas.map(t => ({ text: t }))].forEach((r) => {
+      const todas = [...ultimas, ...fijas.map(t => ({ text: t }))];
+      todas.forEach((r, i) => {
         const div = document.createElement("div");
         div.className = "opinion-sticker";
         div.innerHTML = r.name ? `<strong>🍭 ${r.name}</strong><p>${r.text}</p>` : `<p>${r.text}</p>`;
-        lista.appendChild(div);
+        (i % 2 === 0 ? izq : der).appendChild(div);
       });
     });
   </script>
 
-  <!-- Script para saludo, sesión y música -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const nombre = localStorage.getItem("usuario");
