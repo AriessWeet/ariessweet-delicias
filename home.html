@@ -29,7 +29,7 @@
     <button id="cerrar-sesion" class="cerrar-btn">Cerrar sesión</button>
   </header>
 
-  <!-- Botón sobre mí más lindo -->
+  <!-- Botón sobre mí -->
   <section class="seccion-kawaii">
     <a href="sobremi.html" class="mp-button grande rosa">✨ Conocé nuestra historia 💖</a>
   </section>
@@ -40,7 +40,7 @@
     <span class="cerrar" onclick="document.getElementById('cartel-resena').style.display='none'">✖</span>
   </div>
 
-  <!-- Sección de opiniones en dos columnas -->
+  <!-- Opiniones -->
   <section class="seccion-kawaii">
     <h2>💬 Opiniones</h2>
     <div class="opiniones-kawaii">
@@ -61,30 +61,30 @@
     </form>
   </section>
 
-  <!-- Sección de contacto -->
+  <!-- Conexiones -->
   <section class="seccion-kawaii">
     <h2>💖 Conectá con nosotras</h2>
     <a href="https://wa.me/59894295759" class="mp-button">💬 Escribinos por WhatsApp</a>
-    <a href="https://www.instagram.com/ariessweet" class="mp-button rosa" target="_blank">📸 Seguínos en Instagram</a>
+    <a href="https://www.instagram.com/ariessweet_bynanda" class="mp-button rosa" target="_blank">📸 Seguínos en Instagram</a>
     <a href="https://mpago.la/tu-link" class="mp-button verde">💳 Pagar con Mercado Pago</a>
   </section>
 
-  <!-- Botón flotante de WhatsApp -->
+  <!-- WhatsApp flotante -->
   <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
 
-<footer class="footer-kawaii">
-  <p>Hecho con amor por AriessWeet 🍓</p>
-  <div class="footer-redes">
-    <a href="https://wa.me/59894295759" target="_blank">💬 WhatsApp</a>
-    <a href="https://www.instagram.com/ariessweet" target="_blank">📸 Instagram</a>
-  </div>
-  <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
-  <br />
-  <small class="creditos">🌟 Página diseñada por Gabriel Spinelli</small>
-</footer>
+  <!-- Footer -->
+  <footer class="footer-kawaii">
+    <p>Hecho con amor por AriessWeet 🍓</p>
+    <div class="footer-redes">
+      <a href="https://wa.me/59894295759" target="_blank">💬 WhatsApp</a>
+      <a href="https://www.instagram.com/ariessweet_bynanda" target="_blank">📸 Instagram</a>
+    </div>
+    <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
+    <br />
+    <small class="creditos">🌟 Página diseñada por Gabriel Spinelli</small>
+  </footer>
 
-
-  <!-- Firebase + lógica de reseñas -->
+  <!-- Firebase + reseñas -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
     import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
@@ -103,6 +103,7 @@
     const db = getDatabase(app);
     const reviewsRef = ref(db, 'reseñas');
 
+    // Mostrar reseñas
     onValue(reviewsRef, (snapshot) => {
       const data = snapshot.val();
       const listaIzq = document.getElementById("columna-izq");
@@ -129,13 +130,17 @@
           div.innerHTML = `<strong>🍭 ${r.nombre}</strong><p>${r.texto}</p>`;
           listaDer.appendChild(div);
         });
+      } else {
+        listaIzq.innerHTML = "<p>No hay reseñas todavía 💌</p>";
+        listaDer.innerHTML = "";
       }
     });
 
+    // Enviar nueva reseña
     document.getElementById("review-form").addEventListener("submit", (e) => {
       e.preventDefault();
-      const nombre = document.getElementById("review-name").value;
-      const texto = document.getElementById("review-text").value;
+      const nombre = document.getElementById("review-name").value.trim();
+      const texto = document.getElementById("review-text").value.trim();
       if (nombre && texto) {
         push(reviewsRef, {
           nombre,
@@ -147,7 +152,7 @@
     });
   </script>
 
-  <!-- Otros scripts -->
+  <!-- Scripts generales -->
   <script>
     function activarMusica() {
       document.getElementById('bgm').play();
