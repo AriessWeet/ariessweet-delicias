@@ -6,57 +6,8 @@
   <title>AriessWeet | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    .formulario-opinion {
-      margin-top: 2rem;
-      padding: 1.5rem;
-      background-color: #fff0f5;
-      border-radius: 1rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-    .formulario-opinion input,
-    .formulario-opinion textarea {
-      width: 90%;
-      padding: 0.7rem;
-      margin: 0.5rem 0;
-      border: 1px solid #ffb6c1;
-      border-radius: 1rem;
-      font-family: 'Quicksand', sans-serif;
-    }
-    .formulario-opinion button {
-      background-color: #ff69b4;
-      color: white;
-      border: none;
-      padding: 0.6rem 1.5rem;
-      border-radius: 2rem;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    .formulario-opinion button:hover {
-      background-color: #e05697;
-    }
-    .mensaje-invitacion {
-      text-align: center;
-      font-size: 1.1rem;
-      margin: 2rem 1rem 1rem;
-      color: #6c2a61;
-    }
-  </style>
 </head>
 <body class="home-body">
-
-  <!-- Popup bienvenida música -->
-  <div class="popup-musica" id="popupMusica">
-    <div class="popup-musica-contenido">
-      <h2>💖 Bienvenida a AriessWeet</h2>
-      <p>¿Querés activar nuestra música mágica de fondo? 🎶</p>
-      <button id="activarMusica">Sí, claro 🍬</button>
-    </div>
-  </div>
 
   <!-- Banner principal -->
   <header class="banner">
@@ -73,56 +24,28 @@
     <a href="sobremi.html" class="mp-button">Conocé nuestra historia 💖</a>
   </section>
 
-  <!-- Contenido principal -->
-  <main class="contenido">
-    <section class="seccion-kawaii opiniones-kawaii">
-      <h2>💬 Opiniones</h2>
-      <div class="opiniones-grid" id="opinionesContainer">
-        <div class="opinion-sticker">“La Red Velvet fue un espectáculo 😍” — Luciana</div>
-        <div class="opinion-sticker">“Todo llegó en hora y super fresco 🍓” — @dulceamor</div>
-        <div class="opinion-sticker">“Nunca vi una torta tan linda 🎂✨” — Mili</div>
-        <div class="opinion-sticker">“¡Ya van 3 veces que pido! 💖” — @fanpastel</div>
-        <div class="opinion-sticker">“El packaging es lo más tierno 🐰🍰” — Juli</div>
-        <div class="opinion-sticker">“Mi hijo quedó feliz con los cupcakes 🧁” — Caro</div>
-        <div class="opinion-sticker">“Son un 1000/10, como siempre ✨” — @foodie.uy</div>
-        <div class="opinion-sticker">“Mis amigas flashearon con la torta 🦄” — Naty</div>
-        <div class="opinion-sticker">“¡Sigan así! Todo hermoso 💕” — Vale</div>
-        <div class="opinion-sticker">“Un amor desde que pedís hasta que comés 🍬” — Ro</div>
+  <!-- Sección de reseñas -->
+  <section id="reseñas" class="seccion-kawaii">
+    <h2>🍓 Sé parte de nuestro muro de reseñas 💖</h2>
+    <p>Nuestro pequeño salón de la fama dulce 🍰</p>
 
-        <!-- Aviso de feed Instagram centrado -->
-        <div class="opinion-feed-wrapper">
-          <div class="opinion-sticker aviso-feed">
-            📸 Muy pronto vas a poder ver aquí las últimas publicaciones de nuestro Instagram 💫
-          </div>
-        </div>
-      </div>
+    <form id="review-form" class="formulario-opinion">
+      <input type="text" id="review-name" placeholder="Tu nombre" required />
+      <textarea id="review-text" placeholder="Tu mensaje dulce..." required></textarea>
+      <button type="submit">Enviar reseña 🍭</button>
+    </form>
 
-      <p class="mensaje-invitacion">
-        💌 ¡Sé parte de nuestro muro de reseñas!<br>
-        Nuestro pequeño salón de la fama dulce, donde cada historia cuenta 🍓
-      </p>
+    <div id="review-list" class="opiniones-grid"></div>
+  </section>
 
-      <form class="formulario-opinion" id="formOpiniones">
-        <input type="text" id="nombreOpinion" placeholder="Tu nombre o @usuario..." required />
-        <textarea id="mensajeOpinion" rows="3" placeholder="Escribí tu reseña..." required></textarea>
-        <button type="submit">Enviar opinión 🍭</button>
-      </form>
-    </section>
+  <!-- Sección de pagos y contacto -->
+  <section class="seccion-kawaii">
+    <h2>💳 Pagá como quieras</h2>
+    <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a>
+    <a href="https://wa.me/59894295759" class="wpp-button">💌 Pedí por WhatsApp</a>
+  </section>
 
-    <section class="seccion-kawaii">
-      <h2>💳 Pagá como quieras</h2>
-      <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a>
-      <a href="https://wa.me/59894295759" class="wpp-button">💬 Pedí por WhatsApp</a>
-    </section>
-
-    <section class="seccion-kawaii aviso-instagram">
-      <h2>📸 Próximamente...</h2>
-      <p>Muy pronto vas a poder ver nuestro feed de Instagram directo desde esta web 💫</p>
-    </section>
-  </main>
-
-  <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
-
+  <!-- Footer kawaii -->
   <footer class="footer-kawaii">
     <p>Hecho con amor por AriessWeet 🍓</p>
     <div class="footer-redes">
@@ -132,63 +55,81 @@
     <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
   </footer>
 
-  <audio id="bgm" src="assets/sounds/home-bgm.mp3" loop preload="auto"></audio>
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
+
+  <!-- Firebase + reseñas -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCOxnc8vkjcFzLEsFtHkFmjCfwxH_y0DVU",
+      authDomain: "ariessweet2025.firebaseapp.com",
+      databaseURL: "https://ariessweet2025-default-rtdb.firebasedatabase.app", // ✅ CORREGIDO
+      projectId: "ariessweet2025",
+      storageBucket: "ariessweet2025.firebasestorage.app",
+      messagingSenderId: "468812407156",
+      appId: "1:468812407156:web:9858c84ae6bc04095e0c21",
+      measurementId: "G-WHQ77VLT0W"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getDatabase(app);
+    const reviewsRef = ref(db, 'reseñas');
+
+    // enviar reseña
+    document.getElementById("review-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("review-name").value;
+      const text = document.getElementById("review-text").value;
+
+      push(reviewsRef, {
+        name: name,
+        text: text,
+        date: Date.now()
+      });
+
+      document.getElementById("review-form").reset();
+    });
+
+    // mostrar reseñas
+    onValue(reviewsRef, (snapshot) => {
+      const data = snapshot.val();
+      const reviews = [];
+      for (let id in data) {
+        reviews.push({ id, ...data[id] });
+      }
+      reviews.sort((a, b) => b.date - a.date);
+      const recent = reviews.slice(0, 20);
+      const list = document.getElementById("review-list");
+      list.innerHTML = "";
+      recent.forEach((r) => {
+        const div = document.createElement("div");
+        div.className = "opinion-sticker";
+        div.innerHTML = `<strong>🍭 ${r.name}</strong><p>${r.text}</p>`;
+        list.appendChild(div);
+      });
+    });
+  </script>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const nombre = localStorage.getItem("usuario");
       const saludo = document.getElementById("saludo");
-
       if (nombre && saludo) {
         saludo.textContent = `¡Hola ${nombre}! Bienvenid@ a AriessWeet 🍰`;
       } else {
         window.location.href = "index.html";
       }
-
       document.getElementById("cerrar-sesion").addEventListener("click", () => {
         localStorage.removeItem("usuario");
         window.location.href = "index.html";
       });
-
       document.getElementById("anio-footer").textContent = new Date().getFullYear();
-
-      // Música
-      const bgm = document.getElementById("bgm");
-      const popup = document.getElementById("popupMusica");
-      const botonMusica = document.getElementById("activarMusica");
-      botonMusica.addEventListener("click", () => {
-        bgm.volume = 0.15;
-        bgm.play();
-        popup.style.display = "none";
-      });
-
-      // Opiniones del visitante
-      const formulario = document.getElementById("formOpiniones");
-      const contenedor = document.getElementById("opinionesContainer");
-
-      const opinionesGuardadas = JSON.parse(localStorage.getItem("opinionesKawaii")) || [];
-      opinionesGuardadas.forEach(op => agregarSticker(op));
-
-      formulario.addEventListener("submit", e => {
-        e.preventDefault();
-        const nombre = document.getElementById("nombreOpinion").value.trim();
-        const mensaje = document.getElementById("mensajeOpinion").value.trim();
-        if (!nombre || !mensaje) return;
-        const nuevaOpinion = { nombre, mensaje };
-        agregarSticker(nuevaOpinion);
-        opinionesGuardadas.push(nuevaOpinion);
-        localStorage.setItem("opinionesKawaii", JSON.stringify(opinionesGuardadas));
-        formulario.reset();
-      });
-
-      function agregarSticker({ nombre, mensaje }) {
-        const div = document.createElement("div");
-        div.className = "opinion-sticker";
-        div.textContent = `“${mensaje}” — ${nombre}`;
-        contenedor.appendChild(div);
-      }
     });
   </script>
-
 </body>
 </html>
