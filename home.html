@@ -1,154 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AriessWeet | Home</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AriessWeet Delicias</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
 </head>
-<body class="home-body">
 
-  <!-- Banner principal -->
-  <header class="banner">
-    <img src="assets/img/ariessweet-banner.png" alt="Banner AriessWeet" class="banner-img">
-    <div class="banner-texto">
-      <h1 id="saludo">¡Bienvenida a AriessWeet! 🍰</h1>
-      <p>Donde cada dulce tiene magia, color y mucho amor 💖</p>
-    </div>
-    <button id="cerrar-sesion" class="cerrar-btn">Cerrar sesión</button>
+<body>
+  <!-- Secciones del sitio -->
+  <header>
+    <h1>Bienvenidos a AriessWeet Delicias</h1>
   </header>
 
-  <!-- Botón para sección Sobre mí -->
-  <section class="seccion-kawaii">
-    <a href="sobremi.html" class="mp-button">Conocé nuestra historia 💖</a>
-  </section>
-
-  <!-- Sección de reseñas -->
-  <section id="reseñas" class="seccion-kawaii">
-    <h2>🍓 Sé parte de nuestro muro de reseñas 💖</h2>
-    <p>Nuestro pequeño salón de la fama dulce 🍰</p>
-
-    <form id="review-form" class="formulario-opinion">
-      <input type="text" id="review-name" placeholder="Tu nombre" required />
-      <textarea id="review-text" placeholder="Tu mensaje dulce..." required></textarea>
-      <button type="submit">Enviar reseña 🍭</button>
+  <section id="reseñas">
+    <h2>Reseñas</h2>
+    <form id="formularioReseña">
+      <input type="text" id="nombre" placeholder="Tu nombre" required>
+      <textarea id="mensaje" placeholder="Escribe tu reseña" required></textarea>
+      <button type="submit">Enviar reseña</button>
     </form>
-
-    <div id="review-list" class="opiniones-grid">
-      <!-- 20 reseñas fijas -->
-      <div class="opinion-sticker">“La Red Velvet fue un espectáculo 😍” — Luciana</div>
-      <div class="opinion-sticker">“Todo llegó en hora y super fresco 🍓” — @dulceamor</div>
-      <div class="opinion-sticker">“Nunca vi una torta tan linda 🎂✨” — Mili</div>
-      <div class="opinion-sticker">“¡Ya van 3 veces que pido! 💖” — @fanpastel</div>
-      <div class="opinion-sticker">“El packaging es lo más tierno 🐰🍰” — Juli</div>
-      <div class="opinion-sticker">“Mi hijo quedó feliz con los cupcakes 🧁” — Caro</div>
-      <div class="opinion-sticker">“Son un 1000/10, como siempre ✨” — @foodie.uy</div>
-      <div class="opinion-sticker">“Mis amigas flashearon con la torta 🦄” — Naty</div>
-      <div class="opinion-sticker">“¡Sigan así! Todo hermoso 💕” — Vale</div>
-      <div class="opinion-sticker">“Un amor desde que pedís hasta que comés 🍬” — Ro</div>
-      <div class="opinion-sticker">“Nunca me fallan, ¡una delicia tras otra! 🎀” — Sofi</div>
-      <div class="opinion-sticker">“Pedí para un cumple y fue un éxito total 🥳” — Leo</div>
-      <div class="opinion-sticker">“La decoración es un sueño, me enamoré 💫” — Agus</div>
-      <div class="opinion-sticker">“¡Gracias por tanto amor en cada pastelito! 🧁” — Ani</div>
-      <div class="opinion-sticker">“El pedido llegó perfecto, y con un olor riquísimo 😋” — Flor</div>
-      <div class="opinion-sticker">“¡No puedo parar de recomendarles! 💌” — Dani</div>
-      <div class="opinion-sticker">“Se nota el cariño en cada detalle 💝” — Clari</div>
-      <div class="opinion-sticker">“Parecía salida de un cuento de hadas 🧚” — Mika</div>
-      <div class="opinion-sticker">“Lo más dulce del mundo, literalmente 🍭” — Pau</div>
-      <div class="opinion-sticker">“¡Ya quiero volver a pedir! 🐻🎂” — @chocolovers</div>
-    </div>
+    <div id="listaReseñas"></div>
   </section>
 
-  <!-- Sección de pagos -->
-  <section class="seccion-kawaii">
-    <h2>💳 Pagá como quieras</h2>
-    <a href="https://mpago.la/tu-link" class="mp-button">Pagar con Mercado Pago</a>
-    <a href="https://wa.me/59894295759" class="wpp-button">💌 Pedí por WhatsApp</a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer-kawaii">
-    <p>Hecho con amor por AriessWeet 🍓</p>
-    <div class="footer-redes">
-      <a href="https://wa.me/59894295759" target="_blank">💬 WhatsApp</a>
-      <a href="https://www.instagram.com/ariessweet" target="_blank">📸 Instagram</a>
-    </div>
-    <small>&copy; <span id="anio-footer"></span> AriessWeet. Todos los derechos reservados.</small>
+  <footer>
+    <p>&copy; 2025 AriessWeet. Con dulzura para vos 🍰</p>
   </footer>
 
-  <!-- Botón flotante WhatsApp -->
-  <a href="https://wa.me/59894295759" class="boton-wpp-flotante" target="_blank">💬</a>
-
-  <!-- Firebase -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
-
+  <script>
+    // Configuración de Firebase
     const firebaseConfig = {
-      apiKey: "AIzaSyBN7ohoX7boeADUnovRwO-EjGH6bS43Cho",
+      apiKey: "AIzaSyCOxnc8vkjcFzLEsFtHkFmjCfwxH_y0DVU",
       authDomain: "ariessweet2025.firebaseapp.com",
-      databaseURL: "https://ariessweet2025-default-rtdb.firebasedatabase.app",
+      databaseURL: "https://ariessweet2025-default-rtdb.firebaseio.com",
       projectId: "ariessweet2025",
-      storageBucket: "ariessweet2025.appspot.com",
+      storageBucket: "ariessweet2025.firebasestorage.app",
       messagingSenderId: "468812407156",
-      appId: "1:468812407156:web:9858c84ae6bc04095e0c21"
+      appId: "1:468812407156:web:9858c84ae6bc04095e0c21",
+      measurementId: "G-WHQ77VLT0W"
     };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const reviewRef = ref(db, 'reseñas');
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
 
-    // enviar reseña
-    document.getElementById("review-form").addEventListener("submit", (e) => {
+    const reseñasRef = db.ref("reseñas");
+    const formulario = document.getElementById("formularioReseña");
+    const listaReseñas = document.getElementById("listaReseñas");
+
+    formulario.addEventListener("submit", (e) => {
       e.preventDefault();
-      const name = document.getElementById("review-name").value;
-      const text = document.getElementById("review-text").value;
-
-      if (name && text) {
-        push(reviewRef, {
-          name: name,
-          text: text,
-          date: Date.now()
-        });
-        document.getElementById("review-form").reset();
-      }
+      const nombre = document.getElementById("nombre").value;
+      const mensaje = document.getElementById("mensaje").value;
+      const nuevaReseña = {
+        name: nombre,
+        text: mensaje,
+        date: Date.now()
+      };
+      reseñasRef.push(nuevaReseña);
+      formulario.reset();
     });
 
-    // mostrar reseñas desde Firebase
-    onValue(reviewRef, (snapshot) => {
-      const data = snapshot.val();
-      const list = document.getElementById("review-list");
-      if (!data) return;
-
-      const firebaseReviews = Object.values(data)
-        .sort((a, b) => b.date - a.date)
-        .slice(0, 20); // solo las últimas 20
-
-      firebaseReviews.forEach((r) => {
+    reseñasRef.limitToLast(20).on("value", (snapshot) => {
+      listaReseñas.innerHTML = "";
+      const reseñas = [];
+      snapshot.forEach(child => {
+        reseñas.push(child.val());
+      });
+      reseñas.reverse();
+      reseñas.forEach(reseña => {
         const div = document.createElement("div");
-        div.className = "opinion-sticker";
-        div.innerHTML = `<strong>🍭 ${r.name}</strong><p>${r.text}</p>`;
-        list.appendChild(div);
+        div.innerHTML = `<strong>${reseña.name}</strong>: ${reseña.text}`;
+        listaReseñas.appendChild(div);
       });
-    });
-  </script>
-
-  <!-- Otros scripts -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const nombre = localStorage.getItem("usuario");
-      const saludo = document.getElementById("saludo");
-      if (nombre && saludo) {
-        saludo.textContent = `¡Hola ${nombre}! Bienvenid@ a AriessWeet 🍰`;
-      } else {
-        window.location.href = "index.html";
-      }
-      document.getElementById("cerrar-sesion").addEventListener("click", () => {
-        localStorage.removeItem("usuario");
-        window.location.href = "index.html";
-      });
-      document.getElementById("anio-footer").textContent = new Date().getFullYear();
     });
   </script>
 </body>
+
 </html>
